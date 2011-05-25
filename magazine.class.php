@@ -56,6 +56,10 @@ if (!class_exists('cbqc_magazine')) {
             include('post_type.class.php');
             $postType = new CBQC_CustomPostTypes(); 
             
+            // Add custom post type and taxonomies  
+            include('magazine_extra_fields.class.php');
+            $postType = new CBQC_MagazineExtraFields(); 
+            
             
             // add_action("admin_menu", array(&$this,"admin_menu_link"));
             
