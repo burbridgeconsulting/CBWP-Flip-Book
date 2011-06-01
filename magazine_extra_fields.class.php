@@ -67,15 +67,16 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             	'fields' => array(
             		array(
             			'name' => '',
+            			'side_note' => 'Leave blank if you don\'t want text on this page.',
             			'bottom_note' => '',
             			'id' => $prefix . 'main-text-left',
             			'type' => 'ckedit',
             			'name' => 'Main Text',
-            			'side_note' => 'Leave blank if you don\'t want text on this page.',
             			'std' => ''
             		),
                     array(
                         'name' => 'Image',
+            			'side_note' => '',
                         'bottom_note' => 'asdf',
                         'id' => $prefix . 'image-left',
                         'type' => 'image',
@@ -83,6 +84,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
                     ),
         		array(
         			'name' => '',
+        			'side_note' => '',
         			'bottom_note' => '',
         			'id' => $prefix . 'popup-text-left',
         			'type' => 'text',
