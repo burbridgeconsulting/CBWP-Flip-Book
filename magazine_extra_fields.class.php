@@ -59,211 +59,40 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             // ***** Magazine Spread Boxes *****
 
             $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r1b1',  
-            	'title' => 'Home Page, Row 1, Box 1',
+            	'id' => $prefix . 'spread-left-page',
+            	'title' => 'Left Page',
             	'pages' => array('magazine'),
             	'context' => 'normal',
             	'priority' => 'high',
             	'fields' => array(
             		array(
             			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-r1b1',
+            			'bottom_note' => '',
+            			'id' => $prefix . 'main-text-left',
             			'type' => 'ckedit',
-            			'std' => '',
-            			'img' => 'r1b1.jpg',
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r1b2',
-            	'title' => 'Home Page, Row 1, Box 2',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-r1b2',
-            			'type' => 'ckedit',
-            			'img' => 'r1b2.jpg',
-            			'std' => ''
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r2b1',
-            	'title' => 'Home Page, Row 2, Box 1',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r2b1',
-            			'type' => 'image',
-            			'img' => 'r2b1.jpg',
-            			'std' => ''
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r2b2',
-            	'title' => 'Home Page, Row 2, Box 2',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-r2b2',
-            			'type' => 'ckedit',
-            			'img' => 'r2b2.jpg',
+            			'name' => 'Main Text',
+            			'side_note' => 'Leave blank if you don\'t want text on this page.',
             			'std' => ''
             		),
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r2b2',
-            			'type' => 'image',
-            			'std' => ''
-            		),
-            		array(
-            			'name' => 'URL',
-            			'desc' => '',
-            			'id' => $prefix . 'text-r2b2-url',
-            			'type' => 'text',
-            			'std' => 'http://'
-            		)
+                    array(
+                        'name' => 'Image',
+                        'bottom_note' => 'asdf',
+                        'id' => $prefix . 'image-left',
+                        'type' => 'image',
+                        'std' => ''
+                    ),
+        		array(
+        			'name' => '',
+        			'bottom_note' => '',
+        			'id' => $prefix . 'popup-text-left',
+        			'type' => 'text',
+        			'img' => 'r2b2.jpg',
+        			'std' => ''
+        		),
             	)
             );
 
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r2b3',
-            	'title' => 'Home Page, Row 2, Box 3',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r2b3',
-            			'type' => 'image',
-            			'img' => 'r2b3.jpg',
-            			'std' => ''
-            		)
-            	)
-            );
 
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r3b1',
-            	'title' => 'Home Page, Row 3, Box 1',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-r3b1',
-            			'type' => 'ckedit',
-            			'img' => 'r3b1.jpg',
-            			'std' => ''
-            		),
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r3b1',
-            			'type' => 'image',
-            			'img' => '',
-            			'std' => ''
-            		),
-            		array(
-            			'name' => 'URL',
-            			'desc' => '',
-            			'id' => $prefix . 'text-r3b1-url',
-            			'type' => 'text',
-            			'std' => 'http://'
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r3b2',
-            	'title' => 'Home Page, Row 3, Box 2',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r3b2',
-            			'type' => 'image',
-            			'img' => 'r3b2.jpg',
-            			'std' => ''
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-r3b3',
-            	'title' => 'Home Page, Row 3, Box 3',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-r3b3',
-            			'type' => 'ckedit',
-            			'img' => 'r3b3.jpg',
-            			'std' => ''
-            		),
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'image-r3b3',
-            			'type' => 'image',
-            			'img' => '',
-            			'std' => ''
-            		),
-            		array(
-            			'name' => 'URL',
-            			'desc' => '',
-            			'id' => $prefix . 'text-r3b3-url',
-            			'type' => 'text',
-            			'std' => 'http://'
-            		)
-            	)
-            );
-
-            $meta_boxes[] = array(
-            	'id' => $prefix . 'home-page-happenings',  
-            	'title' => 'Home Page Happenings',
-            	'pages' => array('magazine'),
-            	'context' => 'normal',
-            	'priority' => 'high',
-            	'fields' => array(
-            		array(
-            			'name' => '',
-            			'desc' => '',
-            			'id' => $prefix . 'tinymce-happenings',
-            			'type' => 'ckedit',
-            			'std' => '',
-            			'img' => 'happenings.jpg',
-            		)
-            	)
-            );
-            
             require_once('lib/meta_box.class.php');
             foreach ($meta_boxes as $meta_box) {
             	$my_box = new CBQC_MetaBox($meta_box);

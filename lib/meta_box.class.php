@@ -51,18 +51,21 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     		foreach ($this->_meta_box['fields'] as $field) {
     			// get current post meta data
     			$meta = get_post_meta($post->ID, $field['id'], true);  
+                $label_area = '';    			
 
-    			if ($field['img']) {
-    				$image = '<img src="' . WP_PLUGIN_URL . "/cbqc_post_extra_fields/img/" . $field['img'] . '" /';
-    			} else {
-    				$image = '';
-    			}
+                if ($field['side_note']) {
+                    $label_area .= "<p><span class='description'>{$field['side_note']}</span></p>";
+                }
+
+                if ($field['img']) {
+                    $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbqc_post_extra_fields/img/" . $field['img'] . '" /';
+                }
 
     			echo '<tr>',
     					'<th style="width:20%">
     						<label for="', $field['id'], '">', "<strong>", $field['name'], "</strong>", '</label>',
 
-    					$image,
+    					$label_area,
 
     					'</th>',
     					'<td>';
@@ -70,11 +73,11 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     			switch ($field['type']) {
     				case 'text':
     					echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta ? $meta : $field['std'], '" size="30" style="width:97%" />',
-    						'<br />', $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'textarea':
     					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
-    						'<br />', $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'tinymce':                                                                             
     					echo '<div style="border: 1px solid #dfdfdf;">';                               
@@ -82,13 +85,13 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
     						'<br />'; 
     					echo '</div>';
-    					echo $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    					echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'ckedit':
     				  	$ckedit = true;
     					echo '<textarea class="ckedit" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
     						'<br />'; 
-    					echo $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    					echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'select':
     					echo '<select name="', $field['id'], '" id="', $field['id'], '">';
@@ -108,11 +111,11 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					break;
     				case 'file':
     					echo $meta ? "$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
-    						'<br />', $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'image':
     					echo $meta ? "<img src=\"$meta\" width=\"150\" height=\"150\" /><br />$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
-    						'<br />', $field['desc'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;    
     			}
     			echo 	'<td>',
