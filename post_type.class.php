@@ -50,7 +50,7 @@ if ( !class_exists( "CBQC_CustomPostTypes" ) ) {
             			// 'trackbacks',
             			// 'author',
             			// 'excerpt',
-            			// 'page-attributes',
+                        'page-attributes',
             			// 'thumbnail',
             			// 'custom-fields'
             		),
