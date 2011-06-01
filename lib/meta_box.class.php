@@ -47,6 +47,10 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     		echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
     		echo '<table class="form-table">';
+    		
+    		if ($this->_meta_box['html']) {
+    		    echo $this->_meta_box['html'];
+    		}
 
     		foreach ($this->_meta_box['fields'] as $field) {
     			// get current post meta data
@@ -87,12 +91,12 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					echo '</div>';
     					echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
-    				case 'ckedit':
-    				  	$ckedit = true;
-    					echo '<textarea class="ckedit" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
-    						'<br />'; 
-    					echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
-    					break;
+                    case 'ckedit':
+                        $ckedit = true;
+                        echo '<textarea class="ckedit" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
+                            '<br />'; 
+                        echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+                        break;
     				case 'select':
     					echo '<select name="', $field['id'], '" id="', $field['id'], '">';
     					foreach ($field['options'] as $option) {

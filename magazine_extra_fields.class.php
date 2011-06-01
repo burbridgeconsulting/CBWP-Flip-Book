@@ -56,7 +56,18 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
 
             $meta_boxes = array();
 
-            // ***** Magazine Spread Boxes *****
+            // ***** Magazine Spread Boxes *****                             
+            
+            $meta_boxes[] = array(
+            	'id' => $prefix . 'instructions',
+            	'title' => 'Instructions',
+            	'pages' => array('magazine'),
+            	'context' => 'normal',
+            	'priority' => 'high',
+            	'html' => '<p>Just fill in the boxes you want to have things in.</p>',
+            	'fields' => array(
+            	)
+            );            
 
             $meta_boxes[] = array(
             	'id' => $prefix . 'spread-left-page',
@@ -76,8 +87,8 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             		),
                     array(
                         'name' => 'Image',
-            			'side_note' => '',
-                        'bottom_note' => 'asdf',
+            			'side_note' => 'Upload the image you want, or leave blank if you do not want one.',
+                        'bottom_note' => '',
                         'id' => $prefix . 'image-left',
                         'type' => 'image',
                         'std' => ''
