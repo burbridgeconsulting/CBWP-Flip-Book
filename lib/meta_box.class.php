@@ -111,7 +111,9 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					echo ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'checkbox':
-    					echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />', ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    					echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta ? ' checked="checked"' : '', ' />';
+    					echo " <label>{$field['label']}</label>";
+    					echo ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'file':
     					echo $meta ? "$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
