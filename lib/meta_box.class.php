@@ -152,7 +152,8 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     	}
 
     	// Save data from meta box
-    	function save($post_id) {
+    	function save($post_id) {      
+    	    
     		// verify nonce
     		if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
     			return $post_id;
