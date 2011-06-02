@@ -60,6 +60,9 @@ if (!class_exists('cbqc_magazine')) {
             include('magazine_extra_fields.class.php');
             $postType = new CBQC_MagazineExtraFields(); 
             
+            // Define shortcode
+            include('magazine_shortcode.class.php');
+            $shortCode = new CBQC_MagazineShortCode(); 
             
             // add_action("admin_menu", array(&$this,"admin_menu_link"));
             

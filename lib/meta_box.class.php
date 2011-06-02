@@ -15,7 +15,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     			add_action('admin_head', array(&$this, 'add_post_enctype'));
     		}
 
-    		add_action('admin_menu', array(&$this, 'add'));
+            add_action('admin_menu', array(&$this, 'add'));
 
     		add_action('save_post', array(&$this, 'save'));
     	}
@@ -120,7 +120,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'image':
-    					echo $meta ? "<img src=\"$meta\" width=\"150\" height=\"150\" /><br />$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
+    					echo $meta ? "<img src=\"$meta\" /><br />$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;    
     			}
@@ -152,7 +152,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     	}
 
     	// Save data from meta box
-    	function save($post_id) {      
+    	function save($post_id) {    
     	    
     		// verify nonce
     		if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {

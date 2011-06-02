@@ -13,38 +13,6 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             }
             add_action('init', 'ckedit_scripts'); 
 
-            /* Declare a set of easy functions for outputting the values, once they have been stored */
-            function  cbqc_show($field, $id = NULL) {  
-            	if ($id == NULL) {
-            		global $post;
-            		$id = $post->ID;
-            	}
-            	$is_single = true;
-            	$value = get_post_meta($id, $field, $is_single);
-            	echo $value;
-            }  
-
-            function  cbqc_get($field, $id = NULL) {            
-            	global $post;
-            	if ($id == NULL) {
-            		global $post;
-            		$id = $post->ID;
-            	}
-            	$is_single = true;
-            	$value = get_post_meta($id, $field, $is_single);
-            	return $value;
-            }  
-
-            function  cbqc_get_image($field, $id = NULL) {            
-            	global $post;
-            	if ($id == NULL) {
-            		global $post;
-            		$id = $post->ID;
-            	}
-            	$is_single = true;
-            	$value = get_post_meta($id, $field, $is_single);
-            	return "<img src='$value' />";
-            }  
 
             /******************************
 
