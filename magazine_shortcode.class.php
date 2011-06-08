@@ -53,23 +53,71 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content = "<div id='magazine'>";
                     
                 // Iterate through spreads
-                foreach ($spreads as $spread) {
+                $first = true;
+                foreach ($spreads as $spread) { 
                     $id = $spread->ID;
-                    $content .= "<div class='spread'>";
+                    if ($first == true) {
+                        $hidden = '';
+                    } else {
+                        $hidden = ' hidden';
+                        $first = false;
+                    }
+                    $content .= "<div class='spread {$hidden}'>";    
+                    
+                    
+                    // **************************************** //
                     
                     // Left page
                     $left_image = cbqc_get_field('cbqc_image-left', $id);                  
                     if (strlen($left_image) > 0) {
-                        $content .= "<p><strong>Left image: {$left_image}</strong> </p>";
+                        // $style = " style='background-image: url(\"$left_image\")'";
                     }
-                    echo "<div class='page left'{$style}>";
+                    $content .= "<div class='page left'{$style}>";  
                     
-                    echo "</div> <!-- .page .left -->";
+                    $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
+                    if (strlen($left_copy) > 0) {
+                        $content .= "<div class='copy'>";
+                        $content .= $left_copy;
+                        $content .= "</div>";
+                    }
+                    
+                    $left_popup = cbqc_get_field('cbqc_popup-text-left', $id);                  
+                    if (strlen($left_popup) > 0) {
+                        $content .= "<div class='popup'>";
+                        $content .= $left_popup;
+                        $content .= "</div>";
+                    }
+
+                    $content .= "</div> <!-- .page .left -->";  
+                    
+                    // **************************************** //        
+                    
                     
                     // Right page
-                    echo "<div class='page right'{$style}>";
+                    $right_image = cbqc_get_field('cbqc_image-right', $id);                  
+                    if (strlen($right_image) > 0) {
+                        // $style = " style='background-image: url(\"$right_image\")'";
+                    }
+                    $content .= "<div class='page right'{$style}>";  
+                    
+                    $right_copy = cbqc_get_field('cbqc_main-text-right', $id);                  
+                    if (strlen($right_copy) > 0) {
+                        $content .= "<div class='copy'>";
+                        $content .= $right_copy;
+                        $content .= "</div>";
+                    }
+                                                        
+                    $right_popup = cbqc_get_field('cbqc_popup-text-right', $id);                  
+                    if (strlen($right_popup) > 0) {
+                        $content .= "<div class='popup'>";
+                        $content .= $right_popup;
+                        $content .= "</div>";
+                    }
                 
-                    echo "</div> <!-- .page .right -->";
+                    $content .= "</div> <!-- .page .right -->";
+
+                    // **************************************** //
+
 
                     $content .= "</div>";
                 }                  

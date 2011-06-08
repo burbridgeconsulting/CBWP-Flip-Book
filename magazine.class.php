@@ -25,7 +25,7 @@ if (!class_exists('cbqc_magazine')) {
         /**
         * @var array $options Stores the options for this plugin
         */
-        var $options = array();
+        var $options = array(); 
         
         //Class Functions
         /**
@@ -41,7 +41,7 @@ if (!class_exists('cbqc_magazine')) {
             $locale = get_locale();
             $mo = dirname(__FILE__) . "/languages/" . $this->localizationDomain . "-".$locale.".mo";
             load_textdomain($this->localizationDomain, $mo);
-
+            
             //"Constants" setup
             $this->pluginurl = plugins_url() . '/' . dirname(plugin_basename(__FILE__)).'/';
             $this->pluginpath = PLUGIN_PATH . '/' . dirname(plugin_basename(__FILE__)).'/';
