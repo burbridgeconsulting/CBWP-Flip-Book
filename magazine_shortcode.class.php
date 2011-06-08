@@ -51,11 +51,26 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $spreads = get_posts($args); 
                 
                 $content = "<div id='magazine'>";
-                               
+                    
+                // Iterate through spreads
                 foreach ($spreads as $spread) {
                     $id = $spread->ID;
-                    $content .= "<div id='magazine-wrapper'>";
-                    $content .= cbqc_get_image_field('cbqc_image-left', $id);
+                    $content .= "<div class='spread'>";
+                    
+                    // Left page
+                    $left_image = cbqc_get_field('cbqc_image-left', $id);                  
+                    if (strlen($left_image) > 0) {
+                        $content .= "<p><strong>Left image: {$left_image}</strong> </p>";
+                    }
+                    echo "<div class='page left'{$style}>";
+                    
+                    echo "</div> <!-- .page .left -->";
+                    
+                    // Right page
+                    echo "<div class='page right'{$style}>";
+                
+                    echo "</div> <!-- .page .right -->";
+
                     $content .= "</div>";
                 }                  
                 
