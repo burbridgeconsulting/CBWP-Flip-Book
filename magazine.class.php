@@ -69,8 +69,8 @@ if (!class_exists('cbqc_magazine')) {
             //Widget Registration Actions
             // add_action('plugins_loaded', array(&$this,'register_widgets'));
             
-            // add_action("wp_head", array(&$this,"add_css"));
-            add_action('wp_print_scripts', array(&$this, 'add_js'));
+            add_action('wp_print_styles', array(&$this,"add_css"));
+            add_action('init', array(&$this, 'add_js'));
             
             //Filters
             /*
@@ -78,10 +78,13 @@ if (!class_exists('cbqc_magazine')) {
             */
         }
         
-        function add_js() {
+        function add_js() {                                        
             wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'magazine.js', array('jquery') );
         }
-        
+              
+        function add_css() {                                                           
+            wp_enqueue_style( 'cbqc_magazine_styles', $this->pluginurl . 'magazine.css' );
+        }
         
         /**
         * Retrieves the plugin options from the database.

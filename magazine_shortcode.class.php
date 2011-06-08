@@ -30,9 +30,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             		global $post;
             		$id = $post->ID;
             	}
-            	$is_single = true;
+            	$is_single = true;   
+
             	$value = get_post_meta($id, $field, $is_single);
-            	return "<img src='$value' />";
+                return "<img src='$value' />";
             }
                         
             // [bartag foo="foo-value"]
@@ -42,12 +43,24 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 //  'bar' => 'something else',
                 // ), $atts ) );
 
-                // return "foo = {$foo}";
+                // return "foo = {$foo}";         
+                                                            
+                $args = array(
+                    'post_type' => 'magazine',
+                );
+                $spreads = get_posts($args); 
                 
-                $content = "<div id='magazine-wrapper'>";
-                $content .= cbqc_get_image_field('cbqc_image-left', 37);
+                $content = "<div id='magazine'>";
+                               
+                foreach ($spreads as $spread) {
+                    $id = $spread->ID;
+                    $content .= "<div id='magazine-wrapper'>";
+                    $content .= cbqc_get_image_field('cbqc_image-left', $id);
+                    $content .= "</div>";
+                }                  
+                
                 $content .= "</div>";
-                
+
                 return $content;
             }
             add_shortcode( 'magazine', 'magazine_func' );
