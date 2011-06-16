@@ -53,7 +53,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content = "<div id='magazine'>";
                     
                 // Iterate through spreads
-                $first = true;
+                $first = true;  
+                $pnum = 0;
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     if ($first == true) {
@@ -68,11 +69,12 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     // **************************************** //
                     
                     // Left page
-                    $left_image = cbqc_get_field('cbqc_image-left', $id);                  
+                    $left_image = cbqc_get_field('cbqc_image-left', $id);  
+                    $pnum++;                
                     if (strlen($left_image) > 0) {
                         // $style = " style='background-image: url(\"$left_image\")'";
                     }
-                    $content .= "<div class='page left'{$style}>";  
+                    $content .= "<div class='page left'{$style}><div class='page-num'>{$pnum}</div>";  
                     
                     $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
                     if (strlen($left_copy) > 0) {
@@ -95,17 +97,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Right page
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
+                    $pnum++;
                     if (strlen($right_image) > 0) {
                         // $style = " style='background-image: url(\"$right_image\")'";
                     }
                     $content .= "<div class='page right'{$style}>";  
                     
                     $right_copy = cbqc_get_field('cbqc_main-text-right', $id);                  
-                    if (strlen($right_copy) > 0) {
-                        $content .= "<div class='copy'>";
-                        $content .= $right_copy;
-                        $content .= "</div>";
-                    }
+                    $content .= "<div class='copy'><div class='page-num'>{$pnum}</div>";
+                    $content .= $right_copy;
+                    $content .= "</div>";
                                                         
                     $right_popup = cbqc_get_field('cbqc_popup-text-right', $id);                  
                     if (strlen($right_popup) > 0) {
