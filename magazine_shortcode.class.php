@@ -72,7 +72,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $left_image = cbqc_get_field('cbqc_image-left', $id);  
                     $pnum++;                
                     if (strlen($left_image) > 0) {
-                        // $style = " style='background-image: url(\"$left_image\")'";
+                        $style = " style='background-image: url(\"$left_image\")'";
                     }
                     $content .= "<div class='page left'{$style}><div class='page-num'>{$pnum}</div>";  
                     
@@ -99,7 +99,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
                     $pnum++;
                     if (strlen($right_image) > 0) {
-                        // $style = " style='background-image: url(\"$right_image\")'";
+                        $style = " style='background-image: url(\"$right_image\")'";
                     }
                     $content .= "<div class='page right'{$style}>";  
                     

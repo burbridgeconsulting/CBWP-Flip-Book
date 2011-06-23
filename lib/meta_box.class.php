@@ -7,7 +7,12 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     	function __construct($meta_box) {
     		if (!is_admin()) return;
 
-    		$this->_meta_box = $meta_box;
+    		$this->_meta_box = $meta_box;    
+    		
+    		// Add custom admin script
+    		if (is_admin()) {
+    		    wp_enqueue_script('cbqc_magazine_admin', WP_PLUGIN_URL . '/cbqc_magazine/js/admin.js', array('jquery'));
+    		}
 
     		// fix upload bug: http://www.hashbangcode.com/blog/add-enctype-wordpress-post-and-page-forms-471.html
     		$current_page = substr(strrchr($_SERVER['PHP_SELF'], '/'), 1, -4);
@@ -41,8 +46,11 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     	function show() {
     		global $post; 
 
-    		$mce_ids = array();
+    		$mce_ids = array();             
 
+    		// Add post id
+    		echo '<input class="post-id" type="hidden" name="post-id" value="' . $post->ID . '" />';
+    		
     		// Use nonce for verification
     		echo '<input type="hidden" name="mytheme_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
@@ -62,7 +70,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
                 }
 
                 if ($field['img']) {
-                    $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbqc_post_extra_fields/img/" . $field['img'] . '" /';
+                    $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbqc_magazine/images/" . $field['img'] . '" /';
                 }
 
     			echo '<tr>',
@@ -120,7 +128,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'image':
-    					echo $meta ? "<img src=\"$meta\" /><br />$meta<br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
+    					echo $meta ? "<p class='delete' style='text-align: right;'><img src='" . WP_PLUGIN_URL . "/cbqc_magazine/images/delete.png' /></p><img src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;    
     			}
