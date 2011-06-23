@@ -46,7 +46,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // return "foo = {$foo}";         
                                                             
                 $args = array(
-                    'post_type' => 'magazine',
+                    'post_type' => 'magazine',  
+                    'orderby' => 'menu_order',
                 );
                 $spreads = get_posts($args); 
                 
