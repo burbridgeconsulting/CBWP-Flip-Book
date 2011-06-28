@@ -9,7 +9,6 @@ jQuery(document).ready(function($) {
         // 
         var itemID = $(this).parent().parent().find('label').attr('for')
         console.log('itemID=' + itemID)   
-DELETE FROM lif_postmeta WHERE post_id = 385        
         var postID = $('.post-id').value()
         console.log('postID = ' + postID)
     })

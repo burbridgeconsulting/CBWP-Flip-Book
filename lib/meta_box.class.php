@@ -173,7 +173,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     		}
 
     		// check permissions
-    		if ('page' == $_POST['post_type']) {
+    		if ('magazine' == $_POST['post_type']) {
     			if (!current_user_can('edit_page', $post_id)) {
     				return $post_id;
     			}

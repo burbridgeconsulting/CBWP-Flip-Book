@@ -1,0 +1,6 @@
+NOTES
+=====
+
+Under order, the higher the number for a spread, 
+the later it will come.
+
