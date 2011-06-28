@@ -186,12 +186,17 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     			$name = $field['id'];
 
     			$old = get_post_meta($post_id, $name, true);
-    			$new = $_POST[$field['id']];
+    			$new = $_POST[$field['id']];   
+    			
 
     			if ($field['type'] == 'file' || $field['type'] == 'image') {
+    			    
+$delete_test = $_POST[ 'delete-' . $field['id'] ];
+echo "VAL=$delete_test"; 
 
     				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
     				$new = $file['url'];
+    				
     			}
 
     			if ($new && $new != $old) {

@@ -25,4 +25,15 @@ jQuery(document).ready(function($) {
             $('#delete-cbqc_image-right').val('true')               
     })
 
+    $('#cbqc_toc .delete').click(function(event) {
+        event.preventDefault()
+        
+        $(this).parents('td')
+            .find('.field-img').fadeOut().end()
+            .find('.url').remove().end()
+            .find('#cbqc_image-toc').val('').end()
+            .find('#delete-cbqc_image-toc').val('true')
+
+            $('#delete-cbqc_image-toc').val('true')               
+    })
 })
