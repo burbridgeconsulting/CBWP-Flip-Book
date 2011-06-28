@@ -191,11 +191,16 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
 
     			if ($field['type'] == 'file' || $field['type'] == 'image') {
     			    
-$delete_test = $_POST[ 'delete-' . $field['id'] ];
-echo "VAL=$delete_test"; 
-
-    				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
-    				$new = $file['url'];
+                    $delete_this = $_POST[ 'delete-' . $field['id'] ];  
+                    if ($delete_this == 'true') { 
+                        global $post, $wpdb;
+                        $id = $post->ID;
+                        $query = "DELETE FROM " . $wpdb->prefix . "postmeta WHERE post_id={$id} AND meta_key='" . $field['id'] . "'";
+                        $wpdb->query( $query );
+                    } else {
+        				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
+        				$new = $file['url'];
+                    }
     				
     			}
 
