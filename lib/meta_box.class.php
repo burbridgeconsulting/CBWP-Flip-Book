@@ -128,7 +128,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'image':
-    					echo $meta ? "<p class='delete' style='text-align: right;'><img src='" . WP_PLUGIN_URL . "/cbqc_magazine/images/delete.png' /></p><img src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
+    					echo $meta ? "<p style='text-align: right;'><a href=''><img class='delete' src='" . WP_PLUGIN_URL . "/cbqc_magazine/images/delete.png' /></a></p><img class='field-img' src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;    
     			}
@@ -181,13 +181,14 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     			return $post_id;
     		}
 
-    		foreach ($this->_meta_box['fields'] as $field) {
+    		foreach ($this->_meta_box['fields'] as $field) { 
     			$name = $field['id'];
 
     			$old = get_post_meta($post_id, $name, true);
     			$new = $_POST[$field['id']];
 
     			if ($field['type'] == 'file' || $field['type'] == 'image') {
+
     				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
     				$new = $file['url'];
     			}
