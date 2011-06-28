@@ -129,7 +129,8 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					break;
     				case 'image':
     					echo $meta ? "<p style='text-align: right;'><a href=''><img class='delete' src='" . WP_PLUGIN_URL . "/cbqc_magazine/images/delete.png' /></a></p><img class='field-img' src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
-    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
+    						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>',
+    						'<input type="hidden" name="delete-', $field['id'], '" id="delete-', $field['id'], '" value="false" />';
     					break;    
     			}
     			echo 	'<td>',
