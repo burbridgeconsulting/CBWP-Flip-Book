@@ -130,7 +130,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
                     'name' => 'Image',
         			'side_note' => '',
                     'bottom_note' => '',
-                    'id' => $prefix . 'image-left',
+                    'id' => $prefix . 'image-toc',
                     'type' => 'image',
                     'std' => ''
                 ),
