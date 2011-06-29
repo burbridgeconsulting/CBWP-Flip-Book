@@ -8,6 +8,11 @@ jQuery(document).ready(function($) {
   // Clicking left page moves us UP the pages  
   $('.page.left').not('.first').click(function() {  
       $(this).parent().next().fadeIn()
-  })
+  })        
+  
+  // Popup display
+  // $('.popup').toggle(function() {
+  //     $(this).find('div')
+  // })
     
 })

@@ -43,16 +43,32 @@
 }
 
 #cbqc_magazine .popup {
-	border: 1px solid #aaa;
-	background-color: #ddd;
-	/*background-color: #fff716;*/
-	padding: 1em;
-	/*margin: 1em;*/
 	width: 200px;
 	right: 2em;
 	position: absolute;
 	bottom: 2em;
 	z-index: 10;
+}
+
+#cbqc_magazine .popup .msg {
+	position: absolute;
+	bottom: 0;
+	margin: 0;
+}
+
+#cbqc_magazine .left .popup .msg {
+	left: 0;
+}
+
+#cbqc_magazine .right .popup .msg {
+	right: 0;
+}
+
+#cbqc_magazine .popup .content {
+	display: none;
+	border: 1px solid #aaa;
+	background-color: #ddd;
+	padding: 1em;
 }
 
 #cbqc_magazine .left .popup {

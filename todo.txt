@@ -1,14 +1,8 @@
 LIF To Do
 =========
 
-Sorting according to order in numbers
-Format for Lakshmi's thing
-
-Cannot add left image bug
-
-Page turning algorithm
-
-Delete photo
+Page turning animation
+Make text that shows up be configurable by localization method
 
 
 Put off

@@ -93,7 +93,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $left_popup = cbqc_get_field('cbqc_popup-text-left', $id);                  
                     if (strlen($left_popup) > 0) {
                         $content .= "<div class='popup'>";
-                        $content .= $left_popup;
+                        $content .= "<p class='msg'>&#x2767; Read About</p>";
+                        $content .= "<div class='content'>{$left_popup}</div>";
                         $content .= "</div>";
                     }
 
@@ -123,7 +124,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $right_popup = cbqc_get_field('cbqc_popup-text-right', $id);                  
                     if (strlen($right_popup) > 0) {
                         $content .= "<div class='popup'>";
-                        $content .= $right_popup;
+                        $content .= "<p class='msg'>&#x2767; Read About</p>";
+                        $content .= "<div class='content'>{$right_popup}</div>";
                         $content .= "</div>";
                     }
                 
