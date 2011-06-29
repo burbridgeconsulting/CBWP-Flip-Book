@@ -55,8 +55,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                 // Iterate through spreads
                 $first = true;  
-                $pnum = 0; 
-                $i = 0;
+                $i = count($spreads) + 1;
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     if ($first == true) {
@@ -65,7 +64,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         $hidden = ' hidden';
                         $first = false;
                     }          
-                    ++$i;
+                    --$i;
                     $content .= "<div class='spread {$hidden} spread-id-{$id} spread-n-{$i}'>";    
                     
                     
@@ -73,7 +72,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Left page
                     $left_image = cbqc_get_field('cbqc_image-left', $id);  
-                    $pnum++;                
+                    $pnum = $i * 2 - 1;                
                     if (strlen($left_image) > 0) {
                         $style = " style='background-image: url(\"$left_image\")'";
                     }
@@ -100,7 +99,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Right page
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
-                    $pnum++;
+                    $pnum = $i * 2;                
                     if (strlen($right_image) > 0) {
                         $style = " style='background-image: url(\"$right_image\")'";
                     }
