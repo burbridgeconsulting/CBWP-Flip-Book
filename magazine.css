@@ -13,17 +13,29 @@
 
 #cbqc_magazine .spread {
 	position: absolute;
+	height: 623px;
 }
+
+
+/* Hack! */
+#cbqc_magazine p {
+	display: none;
+}
+
+#cbqc_magazine .page p {
+	display: block;
+}
+
 
 #cbqc_magazine .page {
 	background-color: #fff;
-	width: 514px;
+	width: 513px;
 	float: left;
 	height: 623px;
 }
 
 #cbqc_magazine .page.left {
-	width: 413px;
+	width: 514px;
 	border-right: 1px dashed #aaa;
 }
 
