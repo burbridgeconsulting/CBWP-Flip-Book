@@ -11,8 +11,8 @@ jQuery(document).ready(function($) {
   })        
   
   // Popup display
-  // $('.popup').toggle(function() {
-  //     $(this).find('div')
-  // })
+  $('.popup').click(function() {
+      $(this).parent().find('.content').toggle('fast')
+  })
     
 })
