@@ -45,8 +45,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 // return "foo = {$foo}";         
                                                             
-                $args = array(
-                    'post_type' => 'magazine',  
+                $args = array(           
+                    'post_type' => 'magazine',
                     'orderby' => 'menu_order',
                 );
                 $spreads = get_posts($args); 
@@ -55,7 +55,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                 // Iterate through spreads
                 $first = true;  
-                $pnum = 0;
+                $pnum = 0; 
+                $i = 0;
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     if ($first == true) {
@@ -63,8 +64,9 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     } else {
                         $hidden = ' hidden';
                         $first = false;
-                    }
-                    $content .= "<div class='spread {$hidden}'>";    
+                    }          
+                    ++$i;
+                    $content .= "<div class='spread {$hidden} spread-id-{$id} spread-n-{$i}'>";    
                     
                     
                     // **************************************** //

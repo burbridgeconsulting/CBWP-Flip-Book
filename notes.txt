@@ -4,3 +4,6 @@ NOTES
 Under order, the higher the number for a spread, 
 the later it will come.
 
+Just like in a normal magazine. But instead of 1, 2, 3, number them 10, 20, 30.
+That way, if you need to stick one in BETWEEn, say, 10 and 20, you can just number it 25.
+
