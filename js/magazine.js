@@ -12,7 +12,12 @@ jQuery(document).ready(function($) {
   
   // Popup display
   $('.popup').click(function() {
-      $(this).parent().find('.content').toggle('fast')
+      $(this).parent().find('.content').toggle()
   })
+  
+  // Clicking anything else hides popup 
+  // $('body').not('.popup .msg').click(function() {
+  //     $('.popup .content').hide()
+  // })
     
 })

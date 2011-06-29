@@ -138,6 +138,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }                  
                 
                 $content .= "</div>";
+                
+                $content .= "<div style='clear: both;>&nbsp;</div>";
 
                 return $content;
             }
