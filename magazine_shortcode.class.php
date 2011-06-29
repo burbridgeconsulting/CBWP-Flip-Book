@@ -51,7 +51,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 );
                 $spreads = get_posts($args); 
                 
-                $content = "<div id='magazine'>";
+                $content = "<div id='cbqc_magazine'>";
                     
                 // Iterate through spreads
                 $first = true;  
