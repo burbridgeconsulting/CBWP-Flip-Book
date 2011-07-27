@@ -1,5 +1,5 @@
-jQuery(document).ready(function($) {
-                             
+jQuery(document).ready(function($) {                                
+    
   // Clicking right page moves us DOWN the pages  
   $('.page.right').not('.last').click(function() {  
       $(this).parent().fadeOut()
