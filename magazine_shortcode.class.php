@@ -57,9 +57,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $i = count($spreads) + 2; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
-                    $hidden = ' hidden';
                     --$i;
-                    $content .= "<div class='spread {$hidden} spread-id-{$id} spread-n-{$i}'>";    
+                    $content .= "<div class='spread spread-id-{$id} spread-n-{$i}'>";    
                     
                     
                     // **************************************** //
@@ -130,7 +129,6 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                 // Output Cover 
                 $first = true;  
-                $hidden = '';
 
                 $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
                 $content .= "<div class='page right first'></div>";  
