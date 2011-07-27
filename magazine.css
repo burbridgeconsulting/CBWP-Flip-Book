@@ -2,18 +2,24 @@
 
 #cbqc_magazine {
 	height: 623px;
-	width: 1028px;
+	/*width: 1028px;*/
+	width: 514px;
 	margin: 0 auto;
 	position: relative;
 	font-family: Optima;
 	color: #463F28;
 	line-height: 1.8;
 	font-size: 16px;
+	overflow: hidden;
 }
 
 #cbqc_magazine .spread {
 	position: absolute;
 	height: 623px;
+}
+
+#cbqc_magazine .page {
+	position: absolute;
 }
 
 
@@ -32,6 +38,19 @@
 	width: 513px;
 	float: left;
 	height: 623px;
+}
+
+#cbqc_magazine .page.right {
+	left: 515px;
+}
+
+#cbqc_magazine .cover {
+	background-color: #fff;
+	width: 516px;
+}
+
+#cbqc_magazine .cover .page.right {
+	left: 0;
 }
 
 #cbqc_magazine .page.left {

@@ -51,11 +51,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 );
                 $spreads = get_posts($args); 
                 
-                $content = "<div id='cbqc_magazine'>";
-                    
+                $content = "<div id='cbqc_magazine'>";  
+                
                 // Iterate through spreads
                 $first = true;  
-                $i = count($spreads) + 1;
+                $i = count($spreads) + 2; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     if ($first == true) {
@@ -72,7 +72,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Left page
                     $left_image = cbqc_get_field('cbqc_image-left', $id);  
-                    $pnum = $i * 2 - 1;                
+                    $pnum = $i * 2 - 3; // (Subtract 1 for good measure, 1 for the TOC, and 1 for the cover)                
                     if (strlen($left_image) > 0) {
                         $style = " style='background-image: url(\"$left_image\")'";
                     }                                                     
@@ -135,7 +135,14 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
 
                     $content .= "</div>";
-                }                  
+                }                                 
+                
+                // Output TOC spread
+                    
+                // Output Cover 
+                $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
+                $content .= "<div class='page right'></div>";  
+                $content .= "</div>";
                 
                 $content .= "</div>";
                 
