@@ -54,16 +54,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content = "<div id='cbqc_magazine'>";  
                 
                 // Iterate through spreads
-                $first = true;  
                 $i = count($spreads) + 2; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
-                    if ($first == true) {
-                        $hidden = '';
-                    } else {
-                        $hidden = ' hidden';
-                        $first = false;
-                    }          
+                    $hidden = ' hidden';
                     --$i;
                     $content .= "<div class='spread {$hidden} spread-id-{$id} spread-n-{$i}'>";    
                     
@@ -76,12 +70,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     if (strlen($left_image) > 0) {
                         $style = " style='background-image: url(\"$left_image\")'";
                     }                                                     
-                    if ($pnum == 1) {
-                        $class = ' first';
-                    } else {
-                        $class = '';
-                    }
-                    $content .= "<div class='page page-{$pnum} left{$class}'{$style} ><div class='page-num'>{$pnum}</div>";  
+                    $content .= "<div class='page page-{$pnum} left'{$style} ><div class='page-num'>{$pnum}</div>";  
                     
                     $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
                     if (strlen($left_copy) > 0) {
@@ -105,11 +94,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Right page
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
-                    $pnum = $i * 2;                
+                    $pnum = $i * 2 - 2;                
                     if (strlen($right_image) > 0) {
                         $style = " style='background-image: url(\"$right_image\")'";
                     }                  
-                    if ($i == count($spreads)) {
+                    if ($i == count($spreads) + 1) {
                         $class = ' last';
                     } else {
                         $class = '';
@@ -140,8 +129,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Output TOC spread
                     
                 // Output Cover 
+                $first = true;  
+                $hidden = '';
+
                 $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
-                $content .= "<div class='page right'></div>";  
+                $content .= "<div class='page right first'></div>";  
                 $content .= "</div>";
                 
                 $content .= "</div>";

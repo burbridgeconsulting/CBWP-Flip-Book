@@ -17,14 +17,14 @@ jQuery(document).ready(function($) {
     })                               
     
     // Clicking on cover opens magazine
-    $('#cbqc_magazine .cover').click(function(event) {
-        $(this).fadeOut(1600)
-            .parent().animate({
-                width: '1024'
-                }, 1000, 'linear', function() {
-    
-            })
-    })
+    // $('#cbqc_magazine .cover').click(function(event) {
+    //     $(this).fadeOut(1600)
+    //         .parent().animate({
+    //             width: '1024'
+    //             }, 1000, 'linear', function() {
+    // 
+    //         })
+    // })
   
     // Clicking anything else hides popup 
     // $('body').not('.popup .msg').click(function() {
