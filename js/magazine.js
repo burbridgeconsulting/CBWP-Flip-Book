@@ -10,11 +10,14 @@ jQuery(document).ready(function($) {
     $('#cbqc_magazine .page.right').not('.last').click(function(event) {   
 
         $(this).parent().fadeOut()
-            .parent().animate({
+        
+        if ( $(this).hasClass('first') ) {
+            $(this).parent().parent().animate({
                 width: '1024'
                 }, 1000, 'linear', function() {
     
             })
+        }
 
     })
     
@@ -22,12 +25,15 @@ jQuery(document).ready(function($) {
     $('#cbqc_magazine .page.left').not('.first').click(function(event) {  
 
         $(this).parent().next().fadeIn()
-            .parent().animate({
+        
+        if ( $(this).hasClass('page-1') ) {
+            $(this).parent().parent().animate({
                 width: '514'
                 }, 1000, 'linear', function() {
     
             })
-
+        }
+                      
     })                               
     
 })
