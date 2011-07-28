@@ -7,8 +7,14 @@ if ( !class_exists( "CBQC_CoverImageUI" ) ) {
         }               
         
         function plugin_menu() {
-        	add_options_page('My Plugin Options', 'My Plugin', 'manage_options', 'my-unique-identifier', 
-        	    array(&$this, 'plugin_options'));
+        	add_submenu_page(
+        	    'edit.php?post_type=magazine', 
+        	    'Magazine Options', 
+        	    'Magazine Options', 
+        	    'manage_options',
+        	    'magazine_options', 
+        	    array(&$this, 'plugin_options')
+            );
         }                   
         
         function plugin_options() {
