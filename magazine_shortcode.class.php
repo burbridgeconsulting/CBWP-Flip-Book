@@ -102,7 +102,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }     
                     
                 // Output left page
-                $output .= "<div class='page left page-1'>";  
+                $output .= "<div class='page left page-toc'>";  
                 $output .= "<h2>Table of</h2>";  
                 if ($num_cycles >= 2) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'left');

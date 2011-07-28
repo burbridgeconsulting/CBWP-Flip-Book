@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
         if ( $(this).hasClass('first') ) {
             $(this).parent().parent().animate({
                 width: '1024'
-                }, 1000, 'swing', function() {
+                }, 1000, 'easeInQuad', function() {
     
             })
         }
@@ -26,10 +26,10 @@ jQuery(document).ready(function($) {
 
         $(this).parent().next().fadeIn()
         
-        if ( $(this).hasClass('page-1') ) {
+        if ( $(this).hasClass('page-toc') ) {
             $(this).parent().parent().animate({
                 width: '514'
-                }, 1000, 'swing', function() {
+                }, 1000, 'easeInQuad', function() {
     
             })
         }
