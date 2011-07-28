@@ -102,20 +102,20 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }     
                     
                 // Output left page
+                $output .= "<div class='page left page-1'>";  
+                $output .= "<h2>Table of</h2>";  
                 if ($num_cycles >= 2) {
-                    $output .= "<div class='page left page-1'>";  
-                    $output .= "<h2>Table of</h2>";  
                     $output .= output_toc_page($toc_data, $num_cycles, 'left');
-                    $output .= "</div> <!-- page (etc.) -->";  
                 }                   
+                $output .= "</div> <!-- page (etc.) -->";  
                                    
                 // Output right page
+                $output .= "<div class='page right page-2'>";  
+                $output .= "<h2>Contents</h2>";  
                 if ($num_cycles >= 4) {
-                    $output .= "<div class='page right page-2'>";  
-                    $output .= "<h2>Contents</h2>";  
                     $output .= output_toc_page($toc_data, $num_cycles, 'right');
-                    $output .= "</div> <!-- page (etc.) -->";  
                 }        
+                $output .= "</div> <!-- page (etc.) -->";  
                       
                 return $output;
             }
