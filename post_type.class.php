@@ -63,6 +63,12 @@ if ( !class_exists( "CBQC_CustomPostTypes" ) ) {
             			// if left empty 'capability_type' will define editing capability requirements
             		// ),
             	));
+            	
+            	// ***** Add Option to Set Cover Image *****//
+                include('cover_image_ui.class.php');
+                $coverImg = new CBQC_CoverImageUI(); 
+            	
+            	
             }
             add_action('init', 'register_magazine_type');                    
 
