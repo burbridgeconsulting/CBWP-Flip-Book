@@ -175,50 +175,6 @@ if (!class_exists('cbqc_magazine')) {
                 <?php
         }
         
-        /*
-        * ============================
-        * Plugin Widgets
-        * ============================
-        */                        
-        function register_widgets() {
-            //Make sure the widget functions exist
-            if ( function_exists('wp_register_sidebar_widget') ) {
-                //============================
-                //Example Widget 1
-                //============================
-                function display_cbqc_magazine($args) {                    
-                    extract($args);
-                    echo $before_widget . $before_title . $this->options['title'] . $after_title;
-                    echo '<ul>';
-                    //!!! Widget 1 Display Code Goes Here!
-                    echo '</ul>';
-                    echo $after_widget;
-                }                                                                             
-                function cbqc_magazine_control() {            
-                    if ( $_POST["cbqc_magazine_cbqc_magazine_submit"] ) {
-                        $this->options['cbqc_magazine-comments-title'] = stripslashes($_POST["cbqc_magazine-comments-title"]);        
-                        $this->options['cbqc_magazine-comments-template'] = stripslashes($_POST["cbqc_magazine-comments-template"]);
-                        $this->options['cbqc_magazine-hide-admin-comments'] = ($_POST["cbqc_magazine-hide-admin-comments"]=='on'?'':'1');
-                        $this->saveAdminOptions();
-                    }                                                                  
-                    $title = htmlspecialchars($options['cbqc_magazine-comments-title'], ENT_QUOTES);
-                    $template = htmlspecialchars($options['cbqc_magazine-comments-template'], ENT_QUOTES);
-                    $hide_admin_comments = $options['cbqc_magazine-hide-admin-comments'];      
-                ?>
-                    <p><label for="cbqc_magazine-comments-title"><?php _e('Title:', $this->localizationDomain); ?> <input style="width: 250px;" id="cbqc_magazine-comments-title" name="cbqc_magazine-comments-title" type="text" value="<?= $title; ?>" /></label></p>               
-                    <p><label for="cbqc_magazine-comments-template"><?php _e('Template:', $this->localizationDomain); ?> <input style="width: 250px;" id="cbqc_magazine-comments-template" name="cbqc_magazine-comments-template" type="text" value="<?= $template; ?>" /></label></p>
-                    <p><?php _e('The template is made up of HTML and tokens. You can get a list of available tokens at the', $this->localizationDomain); ?> <a href='http://pressography.com/plugins/wp-cbqc_magazine/#tokens-recent' target='_blank'><?php _e('plugin page', $this->localizationDomain); ?></a></p>
-                    <p><input id="cbqc_magazine-hide-admin-comments" name="cbqc_magazine-hide-admin-comments" type="checkbox" <?= ($hide_admin_comments=='1')?'':'checked="CHECKED"'; ?> /> <label for="cbqc_magazine-hide-admin-comments"><?php _e('Show Admin Comments', $this->localizationDomain); ?></label></p>
-                    <input type="hidden" id="cbqc_magazine_cbqc_magazine_submit" name="cbqc_magazine_cbqc_magazine_submit" value="1" />
-                <?php
-                }
-                $widget_ops = array('classname' => 'cbqc_magazine', 'description' => __( 'Widget Description', $this->localizationDomain ) );
-                wp_register_sidebar_widget('cbqc_magazine-cbqc_magazine', __('Widget Title', $this->localizationDomain), array($this, 'display_cbqc_magazine'), $widget_ops);
-                wp_register_widget_control('cbqc_magazine-cbqc_magazine', __('Widget Title', $this->localizationDomain), array($this, 'cbqc_magazine_control'));
-                
-            }  
-        }       
-        
   } //End Class
 } //End if class exists statement
 
