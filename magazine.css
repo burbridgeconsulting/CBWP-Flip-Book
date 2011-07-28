@@ -120,3 +120,34 @@
 #cbqc_magazine .right .page-num {
 	right: 11px;
 }
+
+
+/* TOC */
+#cbqc_magazine .toc-items {
+	width: 470px;
+	margin: 52px auto 0 auto;
+}
+
+#cbqc_magazine .toc-items .row {
+	width: 470px;
+	background: palegoldenrod;
+	margin-bottom: 20px;
+	clear: both;
+}
+
+#cbqc_magazine .toc-item {
+	float: left;
+	text-align: center;
+	margin-left: 50px;
+	height: 240px;
+}
+
+#cbqc_magazine .toc-item.first {
+	margin-left: 0;
+}
+
+#cbqc_magazine .toc-item img {
+	width: 120px;
+	height: 150px;
+	margin-bottom: 8px;
+}
