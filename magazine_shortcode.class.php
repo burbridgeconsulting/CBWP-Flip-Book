@@ -43,18 +43,14 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 function output_toc_page($toc_data, $num_cycles, $page) {
                     if ($page == 'left') {
                         if ($num_cycles > 2) { $num_cycles = 2; }
-                        $start = $num_cycles;
-                        $end = 1;
+                        $start = 1;
                     } elseif ($page == 'right') {
-                        $start = 3;
-                        $end = 2;
+                        // if ($n)
                     } else {
                         // Error!
-                    }      
+                    }
                     
-echo "<p>start=$start; end=$end</p>";
-                    
-                    for ($n = $start; $n >= $end; $n--) {
+                    for ($n = $num_cycles; $n > 0; $n--) {
                         $offset = $n - 1;
                         $start_point = 0 + $offset;
                         $end_point = 3 + $offset; 
@@ -88,10 +84,10 @@ echo "<p>start=$start; end=$end</p>";
                 }                   
                                    
                 // Output right page
-                if ($num_cycles >= 4) {
-                    echo "<h2>Right Page</h2>";
-                    output_toc_page($toc_data, $num_cycles, 'right');
-                }        
+                // if ($num_cycles >= 4) {
+                //     echo "<h2>Right Page</h2>";
+                //     output_toc_page($toc_data, $num_cycles, 'right');
+                // }        
                 
             }
 
