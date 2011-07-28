@@ -108,7 +108,7 @@
 #cbqc_magazine .page-num {
 	position: absolute;
 	bottom: 4px;
-	color: #fff;
+	color: #606060;
 	font-size: 18px;
 	font-style: italic;
 	/*color: #555;*/
@@ -153,19 +153,19 @@
 	margin-bottom: 8px;
 }
 
-#cbqc_magazine .toc h2 {
+#cbqc_magazine #toc h2 {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 18px;
 	letter-spacing: 3px;
 }
 
-#cbqc_magazine .toc .left h2 {
+#cbqc_magazine #toc .left h2 {
 	text-align: right;
 	margin-right: 9px;
 }
 
-#cbqc_magazine .toc .right h2 {
+#cbqc_magazine #toc .right h2 {
 	text-align: left;
 	margin-left: 8px;
 }

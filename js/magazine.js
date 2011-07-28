@@ -1,5 +1,19 @@
 jQuery(document).ready(function($) {                                
     
+    // TOC clicks
+    $('.toc-item a').click(function(event) {
+        event.stopImmediatePropagation()
+        event.preventDefault() 
+        
+        var destination = $(this).attr('href')  
+        
+        // Jump to that spread, by making everything after it, hidden
+        $(destination).nextAll().each(function() {
+            $(this).css('display', 'none')
+        })       
+        $('#toc').fadeOut()
+    })
+    
     // Popup display
     $('#cbqc_magazine .popup').click(function(event) {
         event.stopImmediatePropagation()

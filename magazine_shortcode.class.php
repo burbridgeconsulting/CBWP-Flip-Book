@@ -157,7 +157,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         array_push($toc_data, $data);
                     }
                     
-                    $content .= "<div class='spread spread-id-{$id} spread-n-{$i}'>";    
+                    $content .= "<div class='spread spread-id-{$id}' id='spread-n-{$i}'>";    
                     
                     // **************************************** //
                     
@@ -224,7 +224,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }                                 
                 
                 // Output TOC spread
-                $content .= "<div class='spread toc spread-n-2'>";    
+                $content .= "<div id='toc' class='spread spread-n-2'>";    
 
                 // We reverse the array, because it was gathered in reverse order, and this sets it right for what we want to do here
                 $toc = output_toc(array_reverse($toc_data));
