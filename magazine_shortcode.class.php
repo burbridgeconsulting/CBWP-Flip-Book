@@ -38,32 +38,38 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             
             function output_toc($toc_data) { 
                 // We are doing all this fancy stuff to be able to break up the $toc_data
-                // into two pages, each of which have two rows.         
+                // into two pages, each of which have two rows. 
                 
-                function output_toc_page($toc_data, $num_cycles, $page) {
+                // I know this is a little inefficient, but it makes things so much easier.. 
+                // Reversing the array to go into correct order
+                $toc_data = array_reverse($toc_data);        
+                
+                function do_row($slice) {
+                    foreach ($slice as $toc_item) {
+                        $title = $toc_item['title'];
+                        $image = $toc_item['img'];
+                        $spread_num = $toc_item['spread_num'];
+                        echo "<p>$title = $image = $spread_num</p>";
+                    }
+                }
+
+                function output_toc_page($toc_data, $num_cycles, $page) {   
+                    
                     if ($page == 'left') {
-                        if ($num_cycles > 2) { $num_cycles = 2; }
-                        $start = 1;
-                    } elseif ($page == 'right') {
-                        // if ($n)
+                        $page_offset = 0;
                     } else {
-                        // Error!
+                        $page_offset = 6;
                     }
                     
-                    for ($n = $num_cycles; $n > 0; $n--) {
-                        $offset = $n - 1;
-                        $start_point = 0 + $offset;
-                        $end_point = 3 + $offset; 
-                
-                        echo "<h5>OFFSET $offset</h5>";
-                
-                        for ($i = $end_point; $i >= $start_point; $i--) { 
-                            $title = $toc_data[$i]['title'];
-                            $image = $toc_data[$i]['img'];
-                            $spread_num = $toc_data[$i]['spread_num'];
-                            echo "<p>$title = $image = $spread_num</p>";
-                        }                
-                    }              
+                    $page_slice_top     = array_slice($toc_data, $page_offset, 3);
+                    $page_slice_bottom  = array_slice($toc_data, $page_offset + 3, 3);
+                    
+                    echo "<h6>Top Row</h6>";
+                    do_row($page_slice_top);
+                    
+                    echo "<h6>Bottom Row</h6>";
+                    do_row($page_slice_bottom);
+
                 }
 
                 // Determine number of cycles
@@ -84,10 +90,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }                   
                                    
                 // Output right page
-                // if ($num_cycles >= 4) {
-                //     echo "<h2>Right Page</h2>";
-                //     output_toc_page($toc_data, $num_cycles, 'right');
-                // }        
+                if ($num_cycles >= 4) {
+                    echo "<h2>Right Page</h2>";
+                    output_toc_page($toc_data, $num_cycles, 'right');
+                }        
                 
             }
 
