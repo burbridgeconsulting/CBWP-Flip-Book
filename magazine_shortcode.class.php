@@ -48,6 +48,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $args = array(           
                     'post_type' => 'magazine',
                     'orderby' => 'menu_order',
+                    'numberposts' => '-1',
                 );
                 $spreads = get_posts($args); 
                 
@@ -59,7 +60,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $toc_data = array();
                 
                 foreach ($spreads as $spread) { 
-                    $id = $spread->ID;
+                    $id = $spread->ID; 
                     --$i;
                          
                     if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
@@ -160,14 +161,32 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content .= "</div>";
                 
                 $content .= "<div style='clear: both;>&nbsp;</div>";
-                
-for ($i = count($toc_data) + 1; $i < 0; $i--) { 
-    $title = $toc_data[$i]['title'];
-    $image = $toc_data[$i]['img'];
-    $spread_num = $toc_data[$i]['spread_num'];
-    echo "<p>$title = $image = $spread_num</p>";
-}                
-                
+                           
+$total = count($toc_data);  
+$max_cycles = 4;
+$num_cycles = ceil($total / 3);
+if (($total % 3) > 0) {
+    $num_cycles++;
+}      
+if ($num_cycles > $max_cycles) {
+    $num_cycles = $max_cycles;
+}
+
+for ($n = 1; $n <= $num_cycles; $n++) {
+    $offset = $n - 1;
+    $start_point = 0 + $offset;
+    $end_point = 3 + $offset; 
+    
+    echo "<h5>OFFSET $offset</h5>";
+
+    for ($i = $end_point; $i >= $start_point; $i--) { 
+        $title = $toc_data[$i]['title'];
+        $image = $toc_data[$i]['img'];
+        $spread_num = $toc_data[$i]['spread_num'];
+        echo "<p>$title = $image = $spread_num</p>";
+    }                
+}
+
                 return $content;
             }
             add_shortcode( 'magazine', 'magazine_func' );
