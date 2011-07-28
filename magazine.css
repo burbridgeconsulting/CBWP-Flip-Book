@@ -124,8 +124,8 @@
 
 /* TOC */
 #cbqc_magazine .toc-items {
-	width: 470px;
-	margin: 52px auto 0 auto;
+	width: 464px;
+	margin: 38px auto 0 auto;
 }
 
 #cbqc_magazine .toc-items .row {
@@ -138,8 +138,8 @@
 #cbqc_magazine .toc-item {
 	float: left;
 	text-align: center;
-	margin-left: 50px;
-	height: 240px;
+	margin-left: 34px;
+	height: 260px;
 }
 
 #cbqc_magazine .toc-item.first {
@@ -147,7 +147,24 @@
 }
 
 #cbqc_magazine .toc-item img {
-	width: 120px;
-	height: 150px;
+	width: 130px;
+	height: 180px;
 	margin-bottom: 8px;
+}
+
+#cbqc_magazine .toc h2 {
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 18px;
+	letter-spacing: 3px;
+}
+
+#cbqc_magazine .toc .left h2 {
+	text-align: right;
+	margin-right: 9px;
+}
+
+#cbqc_magazine .toc .right h2 {
+	text-align: left;
+	margin-left: 8px;
 }
