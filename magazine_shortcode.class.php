@@ -163,7 +163,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Left page
                     $left_image = cbqc_get_field('cbqc_image-left', $id);  
-                    $pnum = $i * 2 - 3; // (Subtract 1 for good measure, 1 for the TOC, and 1 for the cover)                
+                    $pnum = $i * 2 - 5; // (Subtract 1 for good measure, 1 for the TOC, and 1 for the cover)                
                     if (strlen($left_image) > 0) {
                         $style = " style='background-image: url(\"$left_image\")'";
                     }                                                     
@@ -191,7 +191,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     // Right page
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
-                    $pnum = $i * 2 - 2;                
+                    $pnum = $i * 2 - 4;                
                     if (strlen($right_image) > 0) {
                         $style = " style='background-image: url(\"$right_image\")'";
                     }                  
