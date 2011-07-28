@@ -172,7 +172,7 @@ if ($num_cycles > $max_cycles) {
     $num_cycles = $max_cycles;
 }
 
-for ($n = 1; $n <= $num_cycles; $n++) {
+for ($n = $num_cycles; $n > 0; $n--) {
     $offset = $n - 1;
     $start_point = 0 + $offset;
     $end_point = 3 + $offset; 
