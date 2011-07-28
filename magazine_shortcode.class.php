@@ -55,11 +55,24 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 // Iterate through spreads
                 $i = count($spreads) + 3; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
+                
+                $toc_data = array();
+                
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     --$i;
-                    $content .= "<div class='spread spread-id-{$id} spread-n-{$i}'>";    
+                         
+                    if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
+                        $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
+                        $title  = $spread->post_title;   
+                        $spread_num = 
+                        
+                        $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$i}");
+                        
+                        array_push($toc_data, $data);
+                    }
                     
+                    $content .= "<div class='spread spread-id-{$id} spread-n-{$i}'>";    
                     
                     // **************************************** //
                     
@@ -127,8 +140,12 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 // Output TOC spread
                 $content .= "<div class='spread toc spread-n-2'>";    
-                $content .= "   <div class='page left page-1'>TOC Left</div>";  
-                $content .= "   <div class='page right page-2'>TOC Right</div>";  
+                $content .= "   <div class='page left page-1'>";  
+
+                $content .= "   </div>";  
+                $content .= "   <div class='page right page-2'>"; 
+                 
+                $content .= "   </div>";  
                 $content .= "</div>";
 
                     
@@ -143,7 +160,14 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content .= "</div>";
                 
                 $content .= "<div style='clear: both;>&nbsp;</div>";
-
+                
+for ($i = count($toc_data) + 1; $i < 0; $i--) { 
+    $title = $toc_data[$i]['title'];
+    $image = $toc_data[$i]['img'];
+    $spread_num = $toc_data[$i]['spread_num'];
+    echo "<p>$title = $image = $spread_num</p>";
+}                
+                
                 return $content;
             }
             add_shortcode( 'magazine', 'magazine_func' );
