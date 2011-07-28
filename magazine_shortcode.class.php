@@ -132,10 +132,12 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content .= "</div>";
 
                     
-                // Output Cover 
+                // Output Cover                                                        
+                $cover_image = get_option('cbqc_cover_img_url');
+                
                 $first = true;  
                 $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
-                $content .= "<div class='page right first'></div>";  
+                $content .= "<div class='page right first'><img src='{$cover_image}' /></div>";  
                 $content .= "</div>";
                 
                 $content .= "</div>";
