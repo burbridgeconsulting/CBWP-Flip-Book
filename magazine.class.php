@@ -78,7 +78,10 @@ if (!class_exists('cbqc_magazine')) {
             */
         }
         
-        function add_js() {                                        
+        function add_js() {                     
+            // wp_deregister_script('jquery');                               
+            // wp_enqueue_script('jquery');
+            // wp_enqueue_script( 'jquery-ui-core', array('jquery') );
             wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery') );
         }
               

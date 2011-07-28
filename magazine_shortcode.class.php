@@ -54,7 +54,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content = "<div id='cbqc_magazine'>";  
                 
                 // Iterate through spreads
-                $i = count($spreads) + 2; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
+                $i = count($spreads) + 3; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
                 foreach ($spreads as $spread) { 
                     $id = $spread->ID;
                     --$i;
@@ -97,7 +97,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     if (strlen($right_image) > 0) {
                         $style = " style='background-image: url(\"$right_image\")'";
                     }                  
-                    if ($i == count($spreads) + 1) {
+                    if ($i == count($spreads) + 2) {
                         $class = ' last';
                     } else {
                         $class = '';
@@ -126,10 +126,14 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }                                 
                 
                 // Output TOC spread
+                $content .= "<div class='spread toc spread-n-2'>";    
+                $content .= "   <div class='page left page-1'>TOC Left</div>";  
+                $content .= "   <div class='page right page-2'>TOC Right</div>";  
+                $content .= "</div>";
+
                     
                 // Output Cover 
                 $first = true;  
-
                 $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
                 $content .= "<div class='page right first'></div>";  
                 $content .= "</div>";

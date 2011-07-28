@@ -14,7 +14,7 @@ jQuery(document).ready(function($) {
         if ( $(this).hasClass('first') ) {
             $(this).parent().parent().animate({
                 width: '1024'
-                }, 1000, 'linear', function() {
+                }, 1000, 'swing', function() {
     
             })
         }
@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
         if ( $(this).hasClass('page-1') ) {
             $(this).parent().parent().animate({
                 width: '514'
-                }, 1000, 'linear', function() {
+                }, 1000, 'swing', function() {
     
             })
         }
