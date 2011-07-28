@@ -34,8 +34,67 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
             	$value = get_post_meta($id, $field, $is_single);
                 return "<img src='$value' />";
+            }                       
+            
+            function output_toc($toc_data) { 
+                // We are doing all this fancy stuff to be able to break up the $toc_data
+                // into two pages, each of which have two rows.         
+                
+                function output_toc_page($toc_data, $num_cycles, $page) {
+                    if ($page == 'left') {
+                        if ($num_cycles > 2) { $num_cycles = 2; }
+                        $start = $num_cycles;
+                        $end = 1;
+                    } elseif ($page == 'right') {
+                        $start = 3;
+                        $end = 2;
+                    } else {
+                        // Error!
+                    }      
+                    
+echo "<p>start=$start; end=$end</p>";
+                    
+                    for ($n = $start; $n >= $end; $n--) {
+                        $offset = $n - 1;
+                        $start_point = 0 + $offset;
+                        $end_point = 3 + $offset; 
+                
+                        echo "<h5>OFFSET $offset</h5>";
+                
+                        for ($i = $end_point; $i >= $start_point; $i--) { 
+                            $title = $toc_data[$i]['title'];
+                            $image = $toc_data[$i]['img'];
+                            $spread_num = $toc_data[$i]['spread_num'];
+                            echo "<p>$title = $image = $spread_num</p>";
+                        }                
+                    }              
+                }
+
+                // Determine number of cycles
+                $total = count($toc_data);  
+                $max_cycles = 4;
+                $num_cycles = ceil($total / 3);
+                if (($total % 3) > 0) {
+                    $num_cycles++;
+                }      
+                if ($num_cycles > $max_cycles) {
+                    $num_cycles = $max_cycles;
+                }     
+                    
+                // Output left page
+                if ($num_cycles >= 2) {
+                    echo "<h2>Left Page</h2>";
+                    output_toc_page($toc_data, $num_cycles, 'left');
+                }                   
+                                   
+                // Output right page
+                if ($num_cycles >= 4) {
+                    echo "<h2>Right Page</h2>";
+                    output_toc_page($toc_data, $num_cycles, 'right');
+                }        
+                
             }
-                        
+
             // [bartag foo="foo-value"]
             function magazine_func( $atts ) {
                 // extract( shortcode_atts( array(
@@ -162,35 +221,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 $content .= "<div style='clear: both;>&nbsp;</div>";
                            
-$total = count($toc_data);  
-$max_cycles = 4;
-$num_cycles = ceil($total / 3);
-if (($total % 3) > 0) {
-    $num_cycles++;
-}      
-if ($num_cycles > $max_cycles) {
-    $num_cycles = $max_cycles;
-}
-
-for ($n = $num_cycles; $n > 0; $n--) {
-    $offset = $n - 1;
-    $start_point = 0 + $offset;
-    $end_point = 3 + $offset; 
-    
-    echo "<h5>OFFSET $offset</h5>";
-
-    for ($i = $end_point; $i >= $start_point; $i--) { 
-        $title = $toc_data[$i]['title'];
-        $image = $toc_data[$i]['img'];
-        $spread_num = $toc_data[$i]['spread_num'];
-        echo "<p>$title = $image = $spread_num</p>";
-    }                
-}
+output_toc($toc_data, $num_cycles);
 
                 return $content;
             }
             add_shortcode( 'magazine', 'magazine_func' );
         }               
-        
     }
 }    
