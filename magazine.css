@@ -20,6 +20,7 @@
 
 #cbqc_magazine .page {
 	position: absolute;
+	/*clip:rect(0px,160px,400px,10px);*/	
 }
 
 
