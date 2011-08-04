@@ -1,9 +1,9 @@
 /* @override http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.1.3 */
 
 #cbqc_magazine {
-	height: 623px;
+	height: 676px;
 	/*width: 1028px;*/
-	width: 514px;
+	width: 550px; /* Width when closed */
 	margin: 0 auto;
 	position: relative;
 	font-family: Optima;
@@ -15,7 +15,8 @@
 
 #cbqc_magazine .spread {
 	position: absolute;
-	height: 623px;
+	height: 676px;
+	z-index: 200;
 }
 
 #cbqc_magazine .page {
@@ -36,18 +37,18 @@
 
 #cbqc_magazine .page {
 	background-color: #fff;
-	width: 513px;
+	width: 550px;
 	float: left;
-	height: 623px;
+	height: 676px;
 }
 
 #cbqc_magazine .page.right {
-	left: 515px;
+	left: 550px;
 }
 
 #cbqc_magazine .cover {
 	background-color: #fff;
-	width: 516px;
+	width: 550px;
 }
 
 #cbqc_magazine .cover .page.right {
@@ -55,8 +56,9 @@
 }
 
 #cbqc_magazine .page.left {
-	width: 514px;
+	width: 550px;
 	border-right: 1px dashed #aaa;
+	z-index: 100;
 }
 
 #cbqc_magazine .hidden {
@@ -93,7 +95,7 @@
 	border: 1px solid #aaa;
 	background-color: #ddd;
 	padding: 1em;
-	z-index: 20;
+	z-index: 220;
 	position: relative;
 }
 
@@ -139,7 +141,7 @@
 #cbqc_magazine .toc-item {
 	float: left;
 	text-align: center;
-	margin-left: 34px;
+	margin-left: 105px;
 	height: 260px;
 }
 
@@ -158,6 +160,7 @@
 	font-weight: normal;
 	font-size: 18px;
 	letter-spacing: 3px;
+	margin-bottom: 51px;
 }
 
 #cbqc_magazine #toc .left h2 {

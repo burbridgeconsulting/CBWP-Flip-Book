@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
         
         if ( $(this).hasClass('first') ) {
             $(this).parent().parent().animate({
-                width: '1024'
+                width: '1101'
                 }, 1000, 'swing', function() {
     
             })
@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
         
         if ( $(this).hasClass('page-toc') ) {
             $(this).parent().parent().animate({
-                width: '514'
+                width: '550'
                 }, 1000, 'swing', function() {
     
             })
