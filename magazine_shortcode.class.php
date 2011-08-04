@@ -43,6 +43,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 function do_row($slice) {
                     $first = 1;
                     foreach ($slice as $toc_item) {
+                        
                         $title = $toc_item['title'];
                         $image = $toc_item['img'];
                         $spread_num = $toc_item['spread_num']; 

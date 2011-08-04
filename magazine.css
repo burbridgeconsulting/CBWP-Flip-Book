@@ -127,7 +127,7 @@
 
 /* TOC */
 #cbqc_magazine .toc-items {
-	width: 464px;
+	width: 430px;
 	margin: 38px auto 0 auto;
 }
 
@@ -140,19 +140,27 @@
 
 #cbqc_magazine .toc-item {
 	float: left;
+	width: 120px;
 	text-align: center;
-	margin-left: 105px;
-	height: 260px;
+	margin-left: 40px;
+	height: 242px;
+	position: relative;
 }
 
 #cbqc_magazine .toc-item.first {
 	margin-left: 0;
 }
 
+#cbqc_magazine .toc-item p {
+	line-height: 1;
+	text-align: center;
+	margin-top: 190px;
+}
+
 #cbqc_magazine .toc-item img {
 	width: 130px;
-	height: 180px;
 	margin-bottom: 8px;
+	display: block;
 }
 
 #cbqc_magazine #toc h2 {
