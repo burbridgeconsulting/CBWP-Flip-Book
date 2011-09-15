@@ -120,8 +120,31 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                       
                 return $output;
             }
+            
+            function generate_page($side) {
+                $image = cbqc_get_field("cbqc_image-$side", $id);  
+                if (strlen($left_image) > 0) {
+                    $style = " style='background-image: url(\"$left_image\")'";
+                }                                                     
+                $content .= "<div class='page left'{$style} >";  
+                
+                $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
+                if (strlen($left_copy) > 0) {
+                    $content .= "<div class='copy'>";
+                    $content .= $left_copy;
+                    $content .= "</div>";
+                }
+                
+                $left_popup = cbqc_get_field('cbqc_popup-text-left', $id);                  
+                if (strlen($left_popup) > 0) {
+                    $content .= "<div class='popup'>";
+                    $content .= "<p class='msg'>&#x2767; Read About</p>";
+                    $content .= "<div class='content'>{$left_popup}</div>";
+                    $content .= "</div>";
+                }
 
-            // [bartag foo="foo-value"]
+                $content .= "</div>";            }
+
             function magazine_func( $atts ) {
                 $args = array(           
                     'post_type' => 'magazine',
@@ -144,57 +167,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     //     array_push($toc_data, $data);
                     // }
                     
-                    
-                    // Left page
-                    $left_image = cbqc_get_field('cbqc_image-left', $id);  
-                    if (strlen($left_image) > 0) {
-                        $style = " style='background-image: url(\"$left_image\")'";
-                    }                                                     
-                    $content .= "<div class='page left'{$style} >";  
-                    
-                    $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
-                    if (strlen($left_copy) > 0) {
-                        $content .= "<div class='copy'>";
-                        $content .= $left_copy;
-                        $content .= "</div>";
-                    }
-                    
-                    $left_popup = cbqc_get_field('cbqc_popup-text-left', $id);                  
-                    if (strlen($left_popup) > 0) {
-                        $content .= "<div class='popup'>";
-                        $content .= "<p class='msg'>&#x2767; Read About</p>";
-                        $content .= "<div class='content'>{$left_popup}</div>";
-                        $content .= "</div>";
-                    }
-
-                    $content .= "</div>";  
-                    
-                    // **************************************** //        
-                    
-                    
-                    // Right page
-                    $right_image = cbqc_get_field('cbqc_image-right', $id);                  
-                    if (strlen($right_image) > 0) {
-                        $style = " style='background-image: url(\"$right_image\")'";
-                    }                  
-                    $content .= "<div class='page right{$class}'{$style}>";  
-                    
-                    $right_copy = cbqc_get_field('cbqc_main-text-right', $id);                  
-                    $content .= "<div class='copy'>";
-                    $content .= $right_copy;
-                    $content .= "</div>";
-                                                        
-                    $right_popup = cbqc_get_field('cbqc_popup-text-right', $id);                  
-                    if (strlen($right_popup) > 0) {
-                        $content .= "<div class='popup'>";
-                        $content .= "<p class='msg'>&#x2767; Read About</p>";
-                        $content .= "<div class='content'>{$right_popup}</div>";
-                        $content .= "</div>";
-                    }
-                
-                    $content .= "</div>";
-
-                    // **************************************** //
+                    $content .= generate_page('left')
+                    $content .= generate_page('right')
                 }                                 
                 
                 // Output TOC spread
