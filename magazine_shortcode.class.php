@@ -123,13 +123,6 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
             // [bartag foo="foo-value"]
             function magazine_func( $atts ) {
-                // extract( shortcode_atts( array(
-                //  'foo' => 'something',
-                //  'bar' => 'something else',
-                // ), $atts ) );
-
-                // return "foo = {$foo}";         
-                                                            
                 $args = array(           
                     'post_type' => 'magazine',
                     'orderby' => 'menu_order',
@@ -137,38 +130,27 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 );
                 $spreads = get_posts($args); 
                 
-                $content = "<div id='cbqc_magazine'>";  
-                
-                // Iterate through spreads
-                $i = count($spreads) + 3; // (Add 1 for good measure, 1 for the TOC, and 1 for the cover)
-                
-                $toc_data = array();
+                $content .= "<div id='cbqc_magazine'>";  
+                $content .= "    <div class='b-load'>";  
                 
                 foreach ($spreads as $spread) { 
-                    $id = $spread->ID; 
-                    --$i;
-                         
-                    if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
-                        $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
-                        $title  = $spread->post_title;   
-                        $spread_num = 
-                        
-                        $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$i}");
-                        
-                        array_push($toc_data, $data);
-                    }
+                    // if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
+                    //     $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
+                    //     $title  = $spread->post_title;   
+                    //     $spread_num = 
+                    //     
+                    //     $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$i}");
+                    //     
+                    //     array_push($toc_data, $data);
+                    // }
                     
-                    $content .= "<div class='spread spread-id-{$id}' id='spread-n-{$i}'>";    
-                    
-                    // **************************************** //
                     
                     // Left page
                     $left_image = cbqc_get_field('cbqc_image-left', $id);  
-                    $pnum = $i * 2 - 5; // (Subtract 1 for good measure, 1 for the TOC, and 1 for the cover)                
                     if (strlen($left_image) > 0) {
                         $style = " style='background-image: url(\"$left_image\")'";
                     }                                                     
-                    $content .= "<div class='page page-{$pnum} left'{$style} ><div class='page-num'>{$pnum}</div>";  
+                    $content .= "<div class='page left'{$style} >";  
                     
                     $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
                     if (strlen($left_copy) > 0) {
@@ -185,26 +167,20 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         $content .= "</div>";
                     }
 
-                    $content .= "</div> <!-- .page .left -->";  
+                    $content .= "</div>";  
                     
                     // **************************************** //        
                     
                     
                     // Right page
                     $right_image = cbqc_get_field('cbqc_image-right', $id);                  
-                    $pnum = $i * 2 - 4;                
                     if (strlen($right_image) > 0) {
                         $style = " style='background-image: url(\"$right_image\")'";
                     }                  
-                    if ($i == count($spreads) + 2) {
-                        $class = ' last';
-                    } else {
-                        $class = '';
-                    }
-                    $content .= "<div class='page page-{$pnum} right{$class}'{$style}>";  
+                    $content .= "<div class='page right{$class}'{$style}>";  
                     
                     $right_copy = cbqc_get_field('cbqc_main-text-right', $id);                  
-                    $content .= "<div class='copy'><div class='page-num'>{$pnum}</div>";
+                    $content .= "<div class='copy'>";
                     $content .= $right_copy;
                     $content .= "</div>";
                                                         
@@ -216,32 +192,30 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         $content .= "</div>";
                     }
                 
-                    $content .= "</div> <!-- .page .right -->";
+                    $content .= "</div>";
 
                     // **************************************** //
-
-
-                    $content .= "</div>";
                 }                                 
                 
                 // Output TOC spread
-                $content .= "<div id='toc' class='spread spread-n-2'>";    
+                // $content .= "<div id='toc' class='spread spread-n-2'>";    
 
                 // We reverse the array, because it was gathered in reverse order, and this sets it right for what we want to do here
-                $toc = output_toc(array_reverse($toc_data));
-                $content .= $toc;
+                // $toc = output_toc(array_reverse($toc_data));
+                // $content .= $toc;
 
-                $content .= "</div>";
+                // $content .= "</div>";
 
                     
                 // Output Cover                                                        
                 $cover_image = get_option('cbqc_cover_img_url');
                 
                 $first = true;  
-                $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
+                // $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
                 $content .= "<div class='page right first'><img src='{$cover_image}' /></div>";  
-                $content .= "</div>";
+                // $content .= "</div>";
                 
+                $content .= "   </div>";
                 $content .= "</div>";
                 
                 $content .= "<div style='clear: both;>&nbsp;</div>";
