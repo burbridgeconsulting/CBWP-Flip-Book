@@ -121,29 +121,32 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 return $output;
             }
             
-            function generate_page($side) {
+            function generate_page($side, $id) {
                 $image = cbqc_get_field("cbqc_image-$side", $id);  
-                if (strlen($left_image) > 0) {
-                    $style = " style='background-image: url(\"$left_image\")'";
+                if (strlen($image) > 0) {
+                    $style = " style='background-image: url(\"$image\")'";
                 }                                                     
-                $content .= "<div class='page left'{$style} >";  
+                $content .= "<div class='page $side'{$style} >";  
                 
-                $left_copy = cbqc_get_field('cbqc_main-text-left', $id);                  
-                if (strlen($left_copy) > 0) {
+                $copy = cbqc_get_field("cbqc_main-text-$side", $id);                  
+                if (strlen($copy) > 0) {
                     $content .= "<div class='copy'>";
-                    $content .= $left_copy;
+                    $content .= $copy;
                     $content .= "</div>";
                 }
                 
-                $left_popup = cbqc_get_field('cbqc_popup-text-left', $id);                  
-                if (strlen($left_popup) > 0) {
+                $popup = cbqc_get_field("cbqc_popup-text-$side", $id);                  
+                if (strlen($popup) > 0) {
                     $content .= "<div class='popup'>";
                     $content .= "<p class='msg'>&#x2767; Read About</p>";
-                    $content .= "<div class='content'>{$left_popup}</div>";
+                    $content .= "<div class='content'>{$popup}</div>";
                     $content .= "</div>";
                 }
 
-                $content .= "</div>";            }
+                $content .= "</div>";           
+                
+                return $content;
+            }
 
             function magazine_func( $atts ) {
                 $args = array(           
@@ -156,7 +159,23 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content .= "<div id='cbqc_magazine'>";  
                 $content .= "    <div class='b-load'>";  
                 
+                // Output Cover                                                        
+                $cover_image = get_option('cbqc_cover_img_url');
+                $first = true;  
+                $content .= "<div class='page right first'><img src='{$cover_image}' /></div>";  
+                
+                // Output TOC spread
+                // $content .= "<div id='toc' class='spread spread-n-2'>";    
+
+                // We reverse the array, because it was gathered in reverse order, and this sets it right for what we want to do here
+                // $toc = output_toc(array_reverse($toc_data));
+                // $content .= $toc;
+
+                // $content .= "</div>";
+                
                 foreach ($spreads as $spread) { 
+                    $id = $spread->ID;                     
+                    
                     // if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
                     //     $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
                     //     $title  = $spread->post_title;   
@@ -167,27 +186,9 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     //     array_push($toc_data, $data);
                     // }
                     
-                    $content .= generate_page('left')
-                    $content .= generate_page('right')
+                    $content .= generate_page('left', $id);
+                    $content .= generate_page('right', $id);
                 }                                 
-                
-                // Output TOC spread
-                // $content .= "<div id='toc' class='spread spread-n-2'>";    
-
-                // We reverse the array, because it was gathered in reverse order, and this sets it right for what we want to do here
-                // $toc = output_toc(array_reverse($toc_data));
-                // $content .= $toc;
-
-                // $content .= "</div>";
-
-                    
-                // Output Cover                                                        
-                $cover_image = get_option('cbqc_cover_img_url');
-                
-                $first = true;  
-                // $content .= "<div class='spread cover {$hidden} spread-n-1'>";    
-                $content .= "<div class='page right first'><img src='{$cover_image}' /></div>";  
-                // $content .= "</div>";
                 
                 $content .= "   </div>";
                 $content .= "</div>";
