@@ -1,11 +1,4 @@
 LIF To Do
 =========
 
-Page turning animation
-Make text that shows up be configurable by localization method
-Table of Contents
-
-Put off
-=======
-
-Sorting visually
+Only load scripts if needed.
