@@ -80,13 +80,13 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     $output .= "<div class='row'>";
                     $output .=  do_row($page_slice_top);
-                    $output .= "</div> <!-- row -->"; 
+                    $output .= "</div>"; 
                     
                     $output .= "<div class='row'>";
                     $output .=  do_row($page_slice_bottom);
-                    $output .= "</div> <!-- row -->"; 
+                    $output .= "</div>"; 
                     
-                    $output .= "</div> <!-- toc -->"; 
+                    $output .= "</div>"; 
                                                  
                     return $output;
                 }
@@ -108,34 +108,34 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 if ($num_cycles >= 2) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'left');
                 }                   
-                $output .= "</div> <!-- page (etc.) -->";  
+                $output .= "</div>";  
                                    
                 // Output right page
-                $output .= "<div class='page right page-2'>";  
+                $output .= "<div class='page right page-toc'>";  
                 $output .= "<h2>Contents</h2>";  
                 if ($num_cycles >= 4) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'right');
                 }        
-                $output .= "</div> <!-- page (etc.) -->";  
+                $output .= "</div>";  
                       
                 return $output;
             }
             
             function generate_page($side, $id) {
-                $image = cbqc_get_field("cbqc_image-$side", $id);  
+                $image = cbqc_get_field("cbqc_image-{$side}", $id);  
                 if (strlen($image) > 0) {
                     $style = " style='background-image: url(\"$image\")'";
                 }                                                     
-                $content .= "<div class='page $side'{$style} >";  
+                $content .= "<div class='page {$side}'{$style} >";  
                 
-                $copy = cbqc_get_field("cbqc_main-text-$side", $id);                  
+                $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
                     $content .= "<div class='copy'>";
                     $content .= $copy;
                     $content .= "</div>";
                 }
                 
-                $popup = cbqc_get_field("cbqc_popup-text-$side", $id);                  
+                $popup = cbqc_get_field("cbqc_popup-text-{$side}", $id);                  
                 if (strlen($popup) > 0) {
                     $content .= "<div class='popup'>";
                     $content .= "<p class='msg'>&#x2767; Read About</p>";
@@ -145,7 +145,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 $content .= "</div>";           
                 
-                return $content;
+                // return $content;
             }
 
             function magazine_func( $atts ) {
@@ -159,36 +159,31 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $content .= "<div id='cbqc_magazine'>";  
                 $content .= "    <div class='b-load'>";  
                 
-                // Output Cover                                                        
-                $cover_image = get_option('cbqc_cover_img_url');
-                $first = true;  
-                $content .= "<div class='page right first'><img src='{$cover_image}' /></div>";  
+                // Cover                                                        
+                // $cover_image = get_option('cbqc_cover_img_url');
+                // $first = true;  
+                // $content .= "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
                 
-                // Output TOC spread
-                // $content .= "<div id='toc' class='spread spread-n-2'>";    
-
-                // We reverse the array, because it was gathered in reverse order, and this sets it right for what we want to do here
-                // $toc = output_toc(array_reverse($toc_data));
-                // $content .= $toc;
-
-                // $content .= "</div>";
-                
-                foreach ($spreads as $spread) { 
+                $toc_data = array();
+                foreach ($spreads as $spread) {
+                    $spread_num++; 
                     $id = $spread->ID;                     
                     
-                    // if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
-                    //     $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
-                    //     $title  = $spread->post_title;   
-                    //     $spread_num = 
-                    //     
-                    //     $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$i}");
-                    //     
-                    //     array_push($toc_data, $data);
-                    // }
+                    if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
+                        $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
+                        $title  = $spread->post_title;   
+                        
+                        $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$spread_num}");
+                        
+                        array_push($toc_data, $data);
+                    }
                     
                     $content .= generate_page('left', $id);
                     $content .= generate_page('right', $id);
-                }                                 
+                }            
+                
+                // Output TOC
+                $content .= output_toc($toc_data);
                 
                 $content .= "   </div>";
                 $content .= "</div>";
