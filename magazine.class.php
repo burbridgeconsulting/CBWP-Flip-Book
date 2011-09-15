@@ -80,15 +80,15 @@ if (!class_exists('cbqc_magazine')) {
                                                  
         function add_js() {   
 
-            wp_enqueue_script( 'cbqc_easing', 'http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core') );
-            wp_enqueue_script( 'cbqc_booklet', 'http://builtbywill.com/code/booklet/src/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core') );
+            wp_enqueue_script( 'cbqc_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core') );
+            wp_enqueue_script( 'cbqc_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core') );
                               
             wp_enqueue_script( 'cbqc_animate_clip', $this->pluginurl . 'js/jquery.animate.clip_.js', array('jquery', 'jquery-ui-core') );
             wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'cbqc_animate_clip') );
         }
               
         function add_css() {                                                           
-            wp_enqueue_style( 'cbqc_jquery_booklet', 'http://builtbywill.com/code/booklet/src/jquery.booklet.1.2.0.css' );
+            wp_enqueue_style( 'cbqc_jquery_booklet', $this->pluginurl . 'jquery.booklet.1.2.0.css' );
             wp_enqueue_style( 'cbqc_magazine_styles', $this->pluginurl . 'magazine.css' );
         }
         

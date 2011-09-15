@@ -145,7 +145,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 $content .= "</div>";           
                 
-                // return $content;
+                return $content;
             }
 
             function magazine_func( $atts ) {

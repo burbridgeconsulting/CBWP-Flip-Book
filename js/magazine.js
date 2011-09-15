@@ -1,20 +1,20 @@
 jQuery(document).ready(function($) {                                
     
-    // $('#cbqc_magazine').booklet({
-    //     autoCenter: true
-    //     closed: true,
-    //     covers: true,
-    //     autoCenter: true,
-    //     arrows: true,
-    //     startingPage: 100,
-    //     manual: false,
-    //     // hovers: false,
-    //     tabs: true,
-    //     hash: true,
-    //     keyboard: true,
-    //     height: 676,
-    //     width: 550
-    // })    
+    $('#cbqc_magazine').booklet({
+        autoCenter: true
+        closed: true,
+        covers: true,
+        autoCenter: true,
+        arrows: true,
+        startingPage: 100,
+        manual: false,
+        // hovers: false,
+        tabs: true,
+        hash: true,
+        keyboard: true,
+        height: 676,
+        width: 550
+    })    
     
     // // TOC clicks
     // $('.toc-item a').click(function(event) {
