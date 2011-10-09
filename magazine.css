@@ -4,68 +4,10 @@
 */
 
 #cbqc_magazine {
-	height: 676px;
-	/*width: 1028px;*/
-	width: 550px; /* Width when closed */
-	margin: 0 auto;
-	position: relative;
 	font-family: Optima;
 	color: #463F28;
 	line-height: 1.8;
 	font-size: 16px;
-	overflow: hidden;
-}
-
-#cbqc_magazine .spread {
-	position: absolute;
-	height: 676px;
-	z-index: 200;
-}
-
-#cbqc_magazine .page {
-	position: absolute;
-	/*clip:rect(0px,160px,400px,10px);*/	
-}
-
-
-/* Hack! */
-#cbqc_magazine p {
-	display: none;
-}
-
-#cbqc_magazine .page p {
-	display: block;
-}
-
-
-#cbqc_magazine .page {
-	background-color: #fff;
-	width: 550px;
-	float: left;
-	height: 676px;
-}
-
-#cbqc_magazine .page.right {
-	left: 550px;
-}
-
-#cbqc_magazine .cover {
-	background-color: #fff;
-	width: 550px;
-}
-
-#cbqc_magazine .cover .page.right {
-	left: 0;
-}
-
-#cbqc_magazine .page.left {
-	width: 550px;
-	border-right: 1px dashed #aaa;
-	z-index: 100;
-}
-
-#cbqc_magazine .hidden {
-	display: none;
 }
 
 #cbqc_magazine .copy {
@@ -109,23 +51,6 @@
 
 #cbqc_magazine .right .popup {
 	right: 1em;	
-}
-
-#cbqc_magazine .page-num {
-	position: absolute;
-	bottom: 4px;
-	color: #606060;
-	font-size: 18px;
-	font-style: italic;
-	/*color: #555;*/
-}
-
-#cbqc_magazine .left .page-num {
-	left: 11px;
-}
-
-#cbqc_magazine .right .page-num {
-	right: 11px;
 }
 
 
