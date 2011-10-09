@@ -156,13 +156,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 );
                 $spreads = get_posts($args); 
                 
-                $content .= "<div id='cbqc_magazine'>\n";  
-                $content .= "\t<div class='b-load'>\n";  
-                
                 // Cover                                                        
-                // $cover_image = get_option('cbqc_cover_img_url');
-                // $first = true;  
-                // $content .= "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
+                $cover_image = get_option('cbqc_cover_img_url');
+                $first = true;  
+                $cover .= "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
                 
                 $toc_data = array();
                 foreach ($spreads as $spread) {
@@ -183,14 +180,22 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }            
                 
                 // Output TOC
-                $content .= output_toc($toc_data);
+                $toc = output_toc($toc_data);
                 
-                $content .= "\t</div>\n";
-                $content .= "</div>\n";
-                
-                $content .= "<div style='clear: both;'>&nbsp;</div>\n";
+                // Cover                                                        
+                $back .= "<div class='page left last cover'></div>";  
 
-                return $content;
+				// Assemble parts
+				$book  = "<div id='cbqc_magazine'>\n";  
+                $book .= "\t<div class='b-load'>\n";  
+                $book .= $cover;
+				$book .= $toc;
+				$book .= $content;
+				$book .= $back;
+                $book .= "\t</div>\n";
+                $book .= "</div>\n";
+                
+				return $book;
             }
             add_shortcode( 'magazine', 'magazine_func' );
         }               
