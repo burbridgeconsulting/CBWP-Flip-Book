@@ -109,3 +109,5 @@
 	text-align: left;
 	margin-left: 8px;
 }
+
+	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background: #fff;}

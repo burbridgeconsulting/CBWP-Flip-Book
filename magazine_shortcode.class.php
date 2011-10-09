@@ -159,7 +159,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Cover                                                        
                 $cover_image = get_option('cbqc_cover_img_url');
                 $first = true;  
-                $cover .= "<div class='page right first cover' style='background-image: url({$cover_image});'></div>";  
+                $cover .= "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
                 
                 $toc_data = array();
                 foreach ($spreads as $spread) {
