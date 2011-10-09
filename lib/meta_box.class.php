@@ -56,7 +56,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
 
     		echo '<table class="form-table">';
     		
-    		if ($this->_meta_box['html']) {
+    		if (isset( $this->_meta_box['html'] )) {
     		    echo $this->_meta_box['html'];
     		}
 
@@ -69,7 +69,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
                     $label_area .= "<p><span class='description'>{$field['side_note']}</span></p>";
                 }
 
-                if ($field['img']) {
+                if (isset( $field['img'] )) {
                     $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbqc_magazine/images/" . $field['img'] . '" /';
                 }
 

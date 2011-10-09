@@ -41,7 +41,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // into two pages, each of which have two rows. 
                                              
                 function do_row($slice) {
-                    $first = 1;
+                    $first = 1;    
+					$output = '';
                     foreach ($slice as $toc_item) {
                         
                         $title = $toc_item['title'];
@@ -56,7 +57,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                             $extra_class = '';
                         }
 
-                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
+                        $output  =  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
                         $output .=  "\t\t\t<img src='{$image}' />";
                         $output .=  "<p>{$title}</p>";
                         $output .=  "</a></div>";
@@ -64,20 +65,26 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     
                     return $output;
                 }
-
-                function output_toc_page($toc_data, $num_cycles, $page) {  
-                    
-                    $output .= "\t\t<div class='toc-items'>\n"; 
+                               
+				// So, this is supposed to magically take the $toc_data array, and slice it into stuff that
+				// will show up appropriately for one page. So through magic, if we pass $page a value of "left",
+				// it should do something different than if we pass it a value of "right". And then, even within
+				// this, we will have a function called do_row(), which will break it up even more.
+                function output_toc_page($toc_data, $page) {  
+                    $output = "\t\t<div class='toc-items'>\n"; 
                     
                     if ($page == 'left') {
                         $page_offset = 0;
                     } else {
                         $page_offset = 6;
                     }
-                    
+                                                    
+					// So we're taking a slice of the array, appropriate to both the
+					// page we're on (see $page_offset above), and then whether it's 
+					// the top row or bottom row.
                     $page_slice_top     = array_slice($toc_data, $page_offset, 3);
                     $page_slice_bottom  = array_slice($toc_data, $page_offset + 3, 3);
-                    
+
                     $output .= "\t\t<div class='row'>\n";
                     $output .=  do_row($page_slice_top);
                     $output .= "</div>"; 
@@ -87,12 +94,19 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $output .= "</div>"; 
                     
                     $output .= "</div>"; 
-                                                 
+
                     return $output;
-                }
+                }                   
+
+				// So we are doing some annoying math to break things up so that they are in sections, because
+				// we are taking an array of 1 to 16 items that go into the TOC, and we are breaking them up
+				// into chunks, so they can be output on two separate pages, and two separate rows within those
+				// pages, and that is inherently confusing. But when you figure it out, it is kind of elegant.
+				// We are starting with $toc_data, which is the array of all the stuff for the TOC from the different
+				// pages.
 
                 // Determine number of cycles
-                $total = count($toc_data);  
+                $total = count($toc_data); // Total items in array
                 $max_cycles = 4;
                 $num_cycles = ceil($total / 3);
                 if (($total % 3) > 0) {
@@ -100,14 +114,12 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }      
                 if ($num_cycles > $max_cycles) {
                     $num_cycles = $max_cycles;
-                }     
-                    
+                }                      
+
                 // Output left page
                 $output = "\t\t<div class='page left page-toc'>\n";  
-                $output .= "\t\t\t<h2>Table of</h2>\n";  
-                if ($num_cycles >= 2) {
-                    $output .= output_toc_page($toc_data, $num_cycles, 'left');
-                }                   
+                $output .= "\t\t\t<h2>Table of</h2>\n"; 
+                $output .= output_toc_page($toc_data, $num_cycles, 'left');
                 $output .= "\t\t</div>\n";  
                                    
                 // Output right page
@@ -117,7 +129,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'right');
                 }        
                 $output .= "\t\t</div>\n";  
-                      
+
                 return $output;
             }
             
@@ -181,7 +193,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $content .= generate_page('right', $id);
                 }            
                 
-                // Output TOC
+                // Output TOC     
                 $toc = output_toc($toc_data);
                 
                 // Cover                                                        
