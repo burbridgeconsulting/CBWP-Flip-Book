@@ -56,8 +56,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                             $extra_class = '';
                         }
 
-                        $output .=  "<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>";
-                        $output .=  "<img src='{$image}' />";
+                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
+                        $output .=  "\t\t\t<img src='{$image}' />";
                         $output .=  "<p>{$title}</p>";
                         $output .=  "</a></div>";
                     }                                                      
@@ -67,7 +67,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 function output_toc_page($toc_data, $num_cycles, $page) {  
                     
-                    $output .= "<div class='toc-items'>"; 
+                    $output .= "\t\t<div class='toc-items'>\n"; 
                     
                     if ($page == 'left') {
                         $page_offset = 0;
@@ -78,11 +78,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $page_slice_top     = array_slice($toc_data, $page_offset, 3);
                     $page_slice_bottom  = array_slice($toc_data, $page_offset + 3, 3);
                     
-                    $output .= "<div class='row'>";
+                    $output .= "\t\t<div class='row'>\n";
                     $output .=  do_row($page_slice_top);
                     $output .= "</div>"; 
                     
-                    $output .= "<div class='row'>";
+                    $output .= "\t\t<div class='row'>\n";
                     $output .=  do_row($page_slice_bottom);
                     $output .= "</div>"; 
                     
@@ -103,20 +103,20 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }     
                     
                 // Output left page
-                $output .= "<div class='page left page-toc'>";  
-                $output .= "<h2>Table of</h2>";  
+                $output .= "\t\t<div class='page left page-toc'>\n";  
+                $output .= "\t\t\t<h2>Table of</h2>\n";  
                 if ($num_cycles >= 2) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'left');
                 }                   
-                $output .= "</div>";  
+                $output .= "\t\t</div>\n";  
                                    
                 // Output right page
-                $output .= "<div class='page right page-toc'>";  
-                $output .= "<h2>Contents</h2>";  
+                $output .= "\t\t<div class='page right page-toc'>\n";  
+                $output .= "\t\t\t<h2>Contents</h2>\n";  
                 if ($num_cycles >= 4) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'right');
                 }        
-                $output .= "</div>";  
+                $output .= "\t\t</div>\n";  
                       
                 return $output;
             }
@@ -126,13 +126,13 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 if (strlen($image) > 0) {
                     $style = " style='background-image: url(\"$image\")'";
                 }                                                     
-                $content .= "<div class='page {$side}'{$style} >";  
+                $content .= "\t\t<div class={$side}'{$style}>\n";  
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
-                    $content .= "<div class='copy'>";
-                    $content .= $copy;
-                    $content .= "</div>";
+                    $content .= "\t\t\t<div class='copy'>\n";
+					$content .= "\t\t\t$copy";
+                    $content .= "\t\t\t</div>\n";
                 }
                 
                 $popup = cbqc_get_field("cbqc_popup-text-{$side}", $id);                  
@@ -143,7 +143,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $content .= "</div>";
                 }
 
-                $content .= "</div>";           
+                $content .= "\t\t</div>\n";           
                 
                 return $content;
             }
@@ -156,8 +156,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 );
                 $spreads = get_posts($args); 
                 
-                $content .= "<div id='cbqc_magazine'>";  
-                $content .= "    <div class='b-load'>";  
+                $content .= "<div id='cbqc_magazine'>\n";  
+                $content .= "\t<div class='b-load'>\n";  
                 
                 // Cover                                                        
                 // $cover_image = get_option('cbqc_cover_img_url');
@@ -185,10 +185,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Output TOC
                 $content .= output_toc($toc_data);
                 
-                $content .= "   </div>";
-                $content .= "</div>";
+                $content .= "\t</div>\n";
+                $content .= "</div>\n";
                 
-                $content .= "<div style='clear: both;>&nbsp;</div>";
+                $content .= "<div style='clear: both;'>&nbsp;</div>\n";
 
                 return $content;
             }

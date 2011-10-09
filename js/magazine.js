@@ -1,14 +1,14 @@
-jQuery(document).ready(function($) {                                
-    
+jQuery(document).ready(function( $ ) {       
+	
     $('#cbqc_magazine').booklet({
-        autoCenter: true
+        autoCenter: true,
         closed: true,
         covers: true,
-        autoCenter: true,
+        autoCenter: true,    
+		overlays: false,
         arrows: true,
         startingPage: 100,
         manual: false,
-        // hovers: false,
         tabs: true,
         hash: true,
         keyboard: true,
@@ -64,22 +64,5 @@ jQuery(document).ready(function($) {
     //         })
     //     }
     //                   
-    // })                               
-    
+    // })	
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
