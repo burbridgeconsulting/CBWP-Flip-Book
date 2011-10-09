@@ -163,8 +163,8 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     	// Save data from meta box
     	function save($post_id) {    
     	    
-    		// verify nonce
-    		if (!wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
+    		// verify nonce      
+    		if (! wp_verify_nonce($_POST['mytheme_meta_box_nonce'], basename(__FILE__))) {
     			return $post_id;
     		}
 
@@ -186,6 +186,9 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     			$name = $field['id'];
 
     			$old = get_post_meta($post_id, $name, true);
+				if (! isset( $_POST[$field['id']] )) {
+					$_POST[$field['id']] = '';
+				}
     			$new = $_POST[$field['id']];   
     			
 
@@ -199,6 +202,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
                         $wpdb->query( $query );
                     } else {
         				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
+						$file['url'] = '';
         				$new = $file['url'];
                     }
     				

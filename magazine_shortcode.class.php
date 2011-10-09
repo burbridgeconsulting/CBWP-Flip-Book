@@ -40,7 +40,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // We are doing all this fancy stuff to be able to break up the $toc_data
                 // into two pages, each of which have two rows. 
                                              
-                function do_row($slice) {
+                function do_row($slice) {  
                     $first = 1;    
 					$output = '';
                     foreach ($slice as $toc_item) {
@@ -57,12 +57,12 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                             $extra_class = '';
                         }
 
-                        $output  =  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
+                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
                         $output .=  "\t\t\t<img src='{$image}' />";
                         $output .=  "<p>{$title}</p>";
                         $output .=  "</a></div>";
                     }                                                      
-                    
+dbgx_trace_var( $output, $var_name = 'output' );                    
                     return $output;
                 }
                                
@@ -105,29 +105,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 				// We are starting with $toc_data, which is the array of all the stuff for the TOC from the different
 				// pages.
 
-                // Determine number of cycles
-                $total = count($toc_data); // Total items in array
-                $max_cycles = 4;
-                $num_cycles = ceil($total / 3);
-                if (($total % 3) > 0) {
-                    $num_cycles++;
-                }      
-                if ($num_cycles > $max_cycles) {
-                    $num_cycles = $max_cycles;
-                }                      
-
                 // Output left page
-                $output = "\t\t<div class='page left page-toc'>\n";  
+                $output  = "\t\t<div class='page left page-toc'>\n";  
                 $output .= "\t\t\t<h2>Table of</h2>\n"; 
-                $output .= output_toc_page($toc_data, $num_cycles, 'left');
+                $output .= output_toc_page($toc_data, 'left');
                 $output .= "\t\t</div>\n";  
                                    
                 // Output right page
                 $output .= "\t\t<div class='page right page-toc'>\n";  
                 $output .= "\t\t\t<h2>Contents</h2>\n";  
-                if ($num_cycles >= 4) {
-                    $output .= output_toc_page($toc_data, $num_cycles, 'right');
-                }        
+                $output .= output_toc_page($toc_data, 'right');
                 $output .= "\t\t</div>\n";  
 
                 return $output;
