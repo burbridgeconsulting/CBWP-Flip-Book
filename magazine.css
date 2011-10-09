@@ -10,6 +10,15 @@
 	font-size: 16px;
 }
 
+#cbqc_magazine .page-toc.left {
+	text-align: right;
+	padding-right: .63em;
+}	
+
+#cbqc_magazine .page-toc.right {
+	padding-left: .5em;
+}	
+
 #cbqc_magazine .copy {
 	padding: 1em;
 	height: 100%;
