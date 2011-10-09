@@ -44,7 +44,7 @@ if (!class_exists('cbqc_magazine')) {
             
             //"Constants" setup
             $this->pluginurl = plugins_url() . '/' . dirname(plugin_basename(__FILE__)).'/';
-            $this->pluginpath = PLUGIN_PATH . '/' . dirname(plugin_basename(__FILE__)).'/';
+            $this->pluginpath = plugin_basename(__FILE__);
             
             //Initialize the options
             //This is REQUIRED to initialize the options when the plugin is loaded!
@@ -79,9 +79,9 @@ if (!class_exists('cbqc_magazine')) {
         }
                                                  
         function add_js() {   
-            wp_enqueue_script( 'cbqc_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core'), undef, true );
-            wp_enqueue_script( 'cbqc_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core'), undef, true );
-            wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'jquery-ui-core','cbqc_booklet'), undef, true );
+            wp_enqueue_script( 'cbqc_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core'), NULL, true );
+            wp_enqueue_script( 'cbqc_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core'), NULL, true );
+            wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'jquery-ui-core','cbqc_booklet'), NULL, true );
         }
               
         function add_css() {                                                           

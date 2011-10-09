@@ -103,7 +103,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }     
                     
                 // Output left page
-                $output .= "\t\t<div class='page left page-toc'>\n";  
+                $output = "\t\t<div class='page left page-toc'>\n";  
                 $output .= "\t\t\t<h2>Table of</h2>\n";  
                 if ($num_cycles >= 2) {
                     $output .= output_toc_page($toc_data, $num_cycles, 'left');
@@ -123,10 +123,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             
             function generate_page($side, $id) {
                 $image = cbqc_get_field("cbqc_image-{$side}", $id);  
+				$style = '';
                 if (strlen($image) > 0) {
                     $style = " style='background-image: url(\"$image\")'";
                 }                                                     
-                $content .= "\t\t<div class='{$side}'{$style}>\n";  
+                $content = "\t\t<div class='{$side}'{$style}>\n";  
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
@@ -159,9 +160,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Cover                                                        
                 $cover_image = get_option('cbqc_cover_img_url');
                 $first = true;  
-                $cover .= "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
+                $cover = "<div class='page right first cover'><img src='{$cover_image}' /></div>";  
                 
                 $toc_data = array();
+				$spread_num = 0;
                 foreach ($spreads as $spread) {
                     $spread_num++; 
                     $id = $spread->ID;                     
@@ -175,7 +177,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         array_push($toc_data, $data);
                     }
                     
-                    $content .= generate_page('left', $id);
+                    $content = generate_page('left', $id);
                     $content .= generate_page('right', $id);
                 }            
                 
@@ -183,7 +185,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $toc = output_toc($toc_data);
                 
                 // Cover                                                        
-                $back .= "<div class='page left last cover'></div>";  
+                $back = "<div class='page left last cover'></div>";  
 
 				// Assemble parts
 				$book  = "<div id='cbqc_magazine'>\n";  
