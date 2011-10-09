@@ -13,7 +13,8 @@ jQuery(document).ready(function( $ ) {
         hash: true,
         keyboard: true,
         height: 676,
-        width: 550
+        width: 1100,
+		pagePadding: 0
     })    
     
     // // TOC clicks

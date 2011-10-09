@@ -126,7 +126,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 if (strlen($image) > 0) {
                     $style = " style='background-image: url(\"$image\")'";
                 }                                                     
-                $content .= "\t\t<div class={$side}'{$style}>\n";  
+                $content .= "\t\t<div class='{$side}'{$style}>\n";  
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
