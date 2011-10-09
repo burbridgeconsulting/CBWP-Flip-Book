@@ -56,13 +56,14 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         } else {
                             $extra_class = '';
                         }
-
-                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='#{$spread_num}'>\n";
+                                                                                                  
+						$page_jump = ($spread_num * 2) + 3;
+                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='./#/page/{$page_jump}'>\n";
                         $output .=  "\t\t\t<img src='{$image}' />";
                         $output .=  "<p>{$title}</p>";
                         $output .=  "</a></div>";
                     }                                                      
-dbgx_trace_var( $output, $var_name = 'output' );                    
+
                     return $output;
                 }
                                
@@ -171,7 +172,7 @@ dbgx_trace_var( $output, $var_name = 'output' );
                         $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
                         $title  = $spread->post_title;   
                         
-                        $data = array("img" => $img, "title" => $title, "spread_num" => "spread-n-{$spread_num}");
+                        $data = array("img" => $img, "title" => $title, "spread_num" => "{$spread_num}");
                         
                         array_push($toc_data, $data);
                     }
