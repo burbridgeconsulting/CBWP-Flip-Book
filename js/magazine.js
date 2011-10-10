@@ -13,7 +13,10 @@ jQuery(document).ready(function( $ ) {
         keyboard: true,
         height: 676,
         width: 1100,
-		pagePadding: 0
+		pagePadding: 0,
+		startingPage: 10,
+		menu: '.book-menu',
+		chapterSelector: true
     })    
     
     // TOC clicks

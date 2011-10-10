@@ -107,7 +107,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 				// pages.
 
                 // Output left page
-                $output  = "\t\t<div class='page left page-toc'>\n";  
+                $output  = "\t\t<div class='page left page-toc' rel='Table of Contents'>\n";  
                 $output .= "\t\t\t<h2>Table of</h2>\n"; 
                 $output .= output_toc_page($toc_data, 'left');
                 $output .= "\t\t</div>\n";  
@@ -121,13 +121,17 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 return $output;
             }
             
-            function generate_page($side, $id) {
+            function generate_page($side, $id, $title) {
                 $image = cbqc_get_field("cbqc_image-{$side}", $id);  
 				$style = '';
                 if (strlen($image) > 0) {
                     $style = " style='background-image: url(\"$image\")'";
-                }                                                     
-                $content = "\t\t<div class='{$side}'{$style}>\n";  
+                }                                                
+     			$rel = NULL;
+				if ($side == 'left') {
+					$rel = "rel='{$title}'";
+				}
+                $content = "\t\t<div class='{$side}'{$style}{$rel}>\n";  
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
@@ -177,8 +181,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         array_push($toc_data, $data);
                     }
                     
-                    $content = generate_page('left', $id);
-                    $content .= generate_page('right', $id);
+                    $content = generate_page('left', $id, $title);
+                    $content .= generate_page('right', $id, $title);
                 }            
                 
                 // Output TOC     
@@ -187,8 +191,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Cover                                                        
                 $back = "<div class='page left last cover'></div>";  
 
+
 				// Assemble parts
-				$book  = "<div id='cbqc_magazine'>\n";  
+				$book  = "<p class='book-menu'></p>";
+				$book .= "<div id='cbqc_magazine'>\n";  
                 $book .= "\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
