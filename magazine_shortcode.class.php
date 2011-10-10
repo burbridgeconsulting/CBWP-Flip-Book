@@ -129,7 +129,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }                                                
      			$rel = NULL;
 				if ($side == 'left') {
-					$rel = "rel='{$title}'";
+					$rel = " rel='{$title}'";
 				}
                 $content = "\t\t<div class='{$side}'{$style}{$rel}>\n";  
                 
@@ -157,10 +157,11 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $args = array(           
                     'post_type' => 'magazine',
                     'orderby' => 'menu_order',
-                    'numberposts' => '-1',
+                    'numberposts' => '-1', 
+					'post_status' => 'publish',
                 );
-                $spreads = array_reverse( get_posts($args) ); 
-                
+                $spreads = array_reverse( get_posts($args) );        
+
                 // Cover                                                        
                 $cover_image = get_option('cbqc_cover_img_url');
                 $first = true;  
@@ -173,9 +174,9 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $spread_num++; 
                     $id = $spread->ID;                     
                     
+                    $title  = $spread->post_title;   
                     if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
                         $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
-                        $title  = $spread->post_title;   
                         
                         $data = array("img" => $img, "title" => $title, "spread_num" => "{$spread_num}");
                         
@@ -191,8 +192,6 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 // Cover                                                        
                 $back = "<div class='page left last cover'></div>";  
-
-dbgx_trace_var( $content, $var_name = 'content' );
 
 				// Assemble parts
 				$book  = "<p class='book-menu'></p>";
