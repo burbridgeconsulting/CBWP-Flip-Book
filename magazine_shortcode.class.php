@@ -125,13 +125,13 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $image = cbqc_get_field("cbqc_image-{$side}", $id);  
 				$style = '';
                 if (strlen($image) > 0) {
-                    $style = " style='background-image: url(\"$image\")'";
+                    $style  = " style='background-image: url(\"$image\");' ";
                 }                                                
      			$rel = NULL;
-				if ($side == 'left') {
+				if (($side == 'left') and (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on')) {
 					$rel = " rel='{$title}'";
 				}
-                $content = "\t\t<div class='{$side}'{$style}{$rel}>\n";  
+                $content = "\t\t<div class='page {$side}'{$style}{$rel}>\n";  
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
@@ -182,7 +182,6 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         
                         array_push($toc_data, $data);
                     }
-                    
                     $content .= generate_page('left', $id, $title);
                     $content .= generate_page('right', $id, $title);
                 }            
@@ -194,14 +193,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $back = "<div class='page left last cover'></div>";  
 
 				// Assemble parts
-				$book  = "<p class='book-menu'></p>";
-				$book .= "<div id='cbqc_magazine'>\n";  
-                $book .= "\t<div class='b-load'>\n";  
+				$book .= "<div id='cbqc_magazine_outr'>\n"; 
+				$book .= "<p class='book-menu'></p>\n"; 
+				$book .= "\t<div id='cbqc_magazine'>\n";
+                $book .= "\t\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
 				$book .= $content;
 				$book .= $back;
-                $book .= "\t</div>\n";
+                $book .= "\t\t</div>\n";           
+				$book .= "\t</div>\n";
                 $book .= "</div>\n";
                 
 				return $book;

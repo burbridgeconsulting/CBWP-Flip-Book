@@ -8,7 +8,7 @@ jQuery(document).ready(function( $ ) {
 		overlays: false,
         arrows: true,
         manual: false,
-        tabs: true,
+        tabs: false,
         hash: true,
         keyboard: true,
         height: 676,

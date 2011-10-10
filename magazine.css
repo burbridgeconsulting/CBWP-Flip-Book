@@ -1,9 +1,10 @@
 /* @override 
 	http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.1.3
 	http://blank1.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.2.1
+	http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.2.1
 */
 
-#cbqc_magazine {
+#cbqc_magazine_outr {
 	font-family: Optima;
 	color: #463F28;
 	line-height: 1.8;
@@ -120,3 +121,7 @@
 }
 
 	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background: #fff;}
+
+#cbqc_magazine .page {
+	height: 2000px;
+}
