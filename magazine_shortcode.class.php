@@ -159,7 +159,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     'orderby' => 'menu_order',
                     'numberposts' => '-1',
                 );
-                $spreads = get_posts($args); 
+                $spreads = array_reverse( get_posts($args) ); 
                 
                 // Cover                                                        
                 $cover_image = get_option('cbqc_cover_img_url');
@@ -168,6 +168,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 $toc_data = array();
 				$spread_num = 0;
+				$content = NULL;
                 foreach ($spreads as $spread) {
                     $spread_num++; 
                     $id = $spread->ID;                     
@@ -181,7 +182,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         array_push($toc_data, $data);
                     }
                     
-                    $content = generate_page('left', $id, $title);
+                    $content .= generate_page('left', $id, $title);
                     $content .= generate_page('right', $id, $title);
                 }            
                 
@@ -191,6 +192,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 // Cover                                                        
                 $back = "<div class='page left last cover'></div>";  
 
+dbgx_trace_var( $content, $var_name = 'content' );
 
 				// Assemble parts
 				$book  = "<p class='book-menu'></p>";
