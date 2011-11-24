@@ -143,7 +143,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $popup = cbqc_get_field("cbqc_popup-text-{$side}", $id);                  
                 if (strlen($popup) > 0) {
                     $content .= "<div class='popup'>";
-                    $content .= "<p class='msg'>&#x2767; Read About</p>";
+                    $content .= "<p class='msg'>Read About</p>";
                     $content .= "<div class='content'>{$popup}</div>";
                     $content .= "</div>";
                 }
