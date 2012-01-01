@@ -14,7 +14,7 @@ jQuery(document).ready(function( $ ) {
         height: 676,
         width: 1100,
 		pagePadding: 0,
-		startingPage: 10,
+		startingPage: 0,
 		menu: '.book-menu',
 		chapterSelector: true,
 		pageNumbers: false
