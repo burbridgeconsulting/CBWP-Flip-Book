@@ -202,7 +202,7 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
                         $wpdb->query( $query );
                     } else {
         				$file = wp_handle_upload($_FILES[$name], array('test_form' => false));
-						$file['url'] = '';
+						// $file['url'] = '';
         				$new = $file['url'];
                     }
     				
