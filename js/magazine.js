@@ -17,7 +17,7 @@ jQuery(document).ready(function( $ ) {
 		startingPage: 0,
 		menu: '.book-menu',
 		chapterSelector: true,
-		pageNumbers: false
+		pageNumbers: true
     })    
     
     // TOC clicks
