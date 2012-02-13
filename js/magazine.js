@@ -16,7 +16,8 @@ jQuery(document).ready(function( $ ) {
 		pagePadding: 0,
 		startingPage: 0,
 		menu: '.book-menu',
-		chapterSelector: true,
+		chapterSelector: false,  
+		pageSelector: true,
 		pageNumbers: true
     })    
     
