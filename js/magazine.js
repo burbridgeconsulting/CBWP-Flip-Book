@@ -17,7 +17,14 @@ jQuery(document).ready(function( $ ) {
 		startingPage: 0,
 		menu: '.book-menu',
 		chapterSelector: true,  
-		pageNumbers: true
+		pageNumbers: true,
+        after: function(opts){
+            // alert('after! new page index is : ' + opts.curr)                
+			if (opts.curr > 3) {
+				var title = $('#cbqc_magazine .b-page-' + opts.curr + ' .page-title').text()
+				$('#cbqc_magazine_outr .b-current').text(title)
+			}
+        }            
     })    
     
     // TOC clicks

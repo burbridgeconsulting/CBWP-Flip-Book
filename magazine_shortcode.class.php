@@ -132,6 +132,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 					$rel = " rel='{$title}'";
 				}
                 $content = "\t\t<div class='page {$side}'{$style}{$rel}>\n";  
+				$content .= "<h3 class='page-title'>$title</h3>\n";
                 
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
