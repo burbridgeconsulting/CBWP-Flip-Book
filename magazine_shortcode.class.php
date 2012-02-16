@@ -124,16 +124,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             function generate_page($side, $id, $title) {
                 $image = cbqc_get_field("cbqc_image-{$side}", $id);  
 				$style = '';
-                if (strlen($image) > 0) {
-                    $style  = " style='background-image: url(\"$image\");' ";
-                }                                                
+                // if (strlen($image) > 0) {
+                //     $style  = " style='background-image: url(\"$image\");' ";
+                // }                                                
      			$rel = NULL;
 				if (($side == 'left') and (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on')) {
 					$rel = " rel='{$title}'";
 				}
                 $content = "\t\t<div class='page {$side}'{$style}{$rel}>\n";  
 				$content .= "<h3 class='page-title'>$title</h3>\n";
-                
+				
                 $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
                     $content .= "\t\t\t<div class='copy'>\n";
@@ -149,6 +149,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $content .= "</div>";
                 }
 
+                if (strlen($image) > 0) {
+					$content .= "\t\t\t<div class='image'><img src='$image' /></div>\n";
+                }                                                
+                
                 $content .= "\t\t</div>\n";           
                 
                 return $content;
