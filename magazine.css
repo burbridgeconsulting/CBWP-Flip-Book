@@ -91,13 +91,15 @@
 }
 
 #cbqc_magazine .toc-item p {
-	line-height: 1;
+	line-height: 1.25;
 	text-align: center;
-	margin-top: 190px;
+	margin-top: 3px;
+	font-size: 14px;
 }
 
 #cbqc_magazine .toc-item img {
 	width: 130px;
+	height: 178px;
 	margin-bottom: 8px;
 	display: block;
 }
