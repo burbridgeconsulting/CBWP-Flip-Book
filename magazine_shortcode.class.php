@@ -179,7 +179,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $spread_num++; 
                     $id = $spread->ID;                     
                     
-                    $title  = $spread->post_title;   
+                    // $title  = $spread->post_title;                     
+                    $title  = cbqc_get_field('cbqc_section-title', $id);   
                     if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
                         $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
                         

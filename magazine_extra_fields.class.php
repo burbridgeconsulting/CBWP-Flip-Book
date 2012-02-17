@@ -120,6 +120,15 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             'priority' => 'high',
             'fields' => array(
         		array(
+        			'name' => 'Section Title',
+        			'side_note' => 'This is the title for the section, as will appear in the table of contents.',
+        			'bottom_note' => '',
+        			'id' => $prefix . 'section-title',
+        			'type' => 'text',
+        			'label' => 'Section Title',
+        			'std' => ''
+        		),  
+        		array(
         			'name' => 'TOC',
         			'side_note' => 'Check this box if you want this spread to show up in the Table of Contents.',
         			'bottom_note' => '',
