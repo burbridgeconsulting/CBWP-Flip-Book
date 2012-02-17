@@ -179,17 +179,17 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $spread_num++; 
                     $id = $spread->ID;                     
                     
-                    // $title  = $spread->post_title;                     
-                    $title  = cbqc_get_field('cbqc_section-title', $id);   
+                    $spread_title  = $spread->post_title;                     
+                    $section_title  = cbqc_get_field('cbqc_section-title', $id);   
                     if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
                         $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
                         
-                        $data = array("img" => $img, "title" => $title, "spread_num" => "{$spread_num}");
+                        $data = array("img" => $img, "title" => $section_title, "spread_num" => "{$spread_num}");
                         
                         array_push($toc_data, $data);
                     }
-                    $content .= generate_page('left', $id, $title);
-                    $content .= generate_page('right', $id, $title);
+                    $content .= generate_page('left', $id, $spread_title);
+                    $content .= generate_page('right', $id, $spread_title);
                 }            
                 
                 // Output TOC     
