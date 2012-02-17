@@ -58,7 +58,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         }
                                                                                                   
 						$page_jump = ($spread_num * 2) + 3;
-                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='./#/page/{$page_jump}'>\n";
+                        $output .=  "\t\t<div class='toc-item{$extra_class}'><a href='{$page_jump}'>\n";
                         $output .=  "\t\t\t<img src='{$image}' />";
                         $output .=  "<p>{$title}</p>";
                         $output .=  "</a></div>";

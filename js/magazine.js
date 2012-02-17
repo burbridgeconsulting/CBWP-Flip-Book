@@ -27,13 +27,14 @@ jQuery(document).ready(function( $ ) {
         }            
     })    
     
-    // TOC clicks
-   //  $('.toc-item a').click(function(event) {
-   //      event.stopImmediatePropagation()
-   //      event.preventDefault() 
-   //      
-   // 	    $('#cbqc_magazine').booklet(6)
-   // })
+	// TOC clicks
+	 $('.toc-item a').click(function(event) {
+		event.stopImmediatePropagation()
+		event.preventDefault() 
+
+	    var pageNum = parseInt( $(this).attr('href') )
+	    $('#cbqc_magazine').booklet( pageNum )
+	})
     
     // Popup display
     $('#cbqc_magazine .popup').click(function(event) {
