@@ -9,7 +9,7 @@ jQuery(document).ready(function( $ ) {
         arrows: true,
         manual: false,
         tabs: false,
-        hash: true,
+        hash: false,
         keyboard: true,
         height: 676,
         width: 1100,
