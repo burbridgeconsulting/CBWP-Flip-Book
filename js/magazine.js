@@ -16,7 +16,9 @@ jQuery(document).ready(function( $ ) {
 		pagePadding: 0,
 		startingPage: 0,
 		menu: '.book-menu',
-		chapterSelector: true,  
+		chapterSelector: true,   
+		next: '.page.right',
+		prev: '.page.left',
 		pageNumbers: true,
         after: function(opts){
             // alert('after! new page index is : ' + opts.curr)                
