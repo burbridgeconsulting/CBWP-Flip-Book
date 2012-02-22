@@ -209,7 +209,10 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 				$book .= $back;
                 $book .= "\t\t</div>\n";           
 				$book .= "\t</div>\n";
-                $book .= "</div>\n";
+				
+				$book .= "\t<p id='narrow-navigation-message'>Click on the book to turn the pages.</p>\n";
+				
+                $book .= "</div>\n"; 
                 
 				return $book;
             }
