@@ -91,18 +91,11 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
-    				case 'tinymce':                                                                             
-    					echo '<div style="border: 1px solid #dfdfdf;">';                               
-    				   array_push($mce_ids, $field['id']);                                           
-    					echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
-    						'<br />'; 
-    					echo '</div>';
-    					echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
-    					break;
-                    case 'ckedit':
-                        $ckedit = true;
-                        echo '<textarea class="ckedit" name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta ? $meta : $field['std'], '</textarea>',
-                            '<br />'; 
+                    case 'tinymce':
+                        $tinymce = true;
+						$settings = array();
+						$content = $meta ? $meta : $field['std'];
+						wp_editor( $content, $field['id'], $settings = array() );
                         echo $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
                         break;
     				case 'select':
@@ -138,26 +131,6 @@ if ( !class_exists( "CBQC_MetaBox" ) ) {
     		}
 
     		echo '</table>'; 
-
-    		// If we have accumulated any TinyMCE type items, then active TinyMCE on them
-    		if (count($mce_ids) > 0) {
-    			?>
-    				<script type="text/javascript">
-    				/* <![CDATA[ */
-
-    				jQuery(document).ready( function () { 
-    					if ( typeof( tinyMCE ) == "object" && typeof( tinyMCE.execCommand ) == "function" ) {
-    			 			<?php foreach ($mce_ids as $id) : ?>
-    						tinyMCE.execCommand("mceAddControl", false, "<?php echo $id; ?>");    
-    						<?php endforeach; ?>
-    					}
-    				});
-
-    				/* ]]> */
-    				</script>
-    			<?php	   
-    		} 
-
     	}
 
     	// Save data from meta box

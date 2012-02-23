@@ -4,18 +4,6 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
      
         function __construct() {
 
-            /*** If you are using CKEDit boxes, please use the following lines to activate it ***/
-            function ckedit_scripts() {
-                if (is_admin()) {
-                    $plugin_url = plugins_url();  // Should really somehow use the version from the class, oh well
-                	wp_enqueue_script('ckedit', $plugin_url . '/cbqc_magazine/ckedit/ckeditor.js', array('jquery'), null, false);
-                	wp_enqueue_script('ckedit-jq-adapter', $plugin_url . '/cbqc_magazine/ckedit/adapters/jquery.js', array('ckedit'), null, false);
-                	wp_enqueue_script('ckedit-loader', $plugin_url . '/cbqc_magazine/ckedit/load-ckedit.js', array('ckedit','ckedit-jq-adapter'), null, false);
-                }     
-            }
-            add_action('init', 'ckedit_scripts'); 
-
-
             /******************************
 
             Edit meta box settings here
@@ -51,7 +39,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
             			'side_note' => 'Leave blank if you don\'t want text on this page.',
             			'bottom_note' => '',
             			'id' => $prefix . 'main-text-left',
-            			'type' => 'ckedit',
+            			'type' => 'tinymce',
             			'name' => 'Main Text',
             			'std' => ''
             		),
@@ -87,7 +75,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
         			'side_note' => 'Leave blank if you don\'t want text on this page.',
         			'bottom_note' => '',
         			'id' => $prefix . 'main-text-right',
-        			'type' => 'ckedit',
+        			'type' => 'tinymce',
         			'name' => 'Main Text',
         			'std' => ''
         		),
