@@ -108,13 +108,13 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 // Output left page
                 $output  = "\t\t<div class='page left page-toc' rel='Table of Contents'>\n";  
-                $output .= "\t\t\t<h2>Table of</h2>\n"; 
+                // $output .= "\t\t\t<h2>Table of</h2>\n"; 
                 $output .= output_toc_page($toc_data, 'left');
                 $output .= "\t\t</div>\n";  
                                    
                 // Output right page
                 $output .= "\t\t<div class='page right page-toc'>\n";  
-                $output .= "\t\t\t<h2>Contents</h2>\n";  
+                // $output .= "\t\t\t<h2>Contents</h2>\n";  
                 $output .= output_toc_page($toc_data, 'right');
                 $output .= "\t\t</div>\n";  
 
