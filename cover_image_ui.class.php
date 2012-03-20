@@ -25,24 +25,26 @@ if ( !class_exists( "CBQC_Options" ) ) {
                 }
 
                 // variables for the field and option names 
-                $hidden_field_name = $prefix . 'submit_hidden';
-                $data_field_name = $prefix . 'cover_img_url';
+                $hidden_field_name = 'cbqc_submit_hidden';
 
                 // Read in existing option value from database
-                $opt_val = get_option( 'cbqc_cover_img_url' );
+                $cbqc_cover_img_url = get_option( 'cbqc_cover_img_url' );
+                $cbqc_back_img_url = get_option( 'cbqc_back_img_url' );
 
                 // See if the user has posted us some information
                 // If they did, this hidden field will be set to 'Y'
                 if( isset($_POST[ $hidden_field_name ]) && $_POST[ $hidden_field_name ] == 'Y' ) {
                     // Read their posted value
-                    $opt_val = $_POST[ $data_field_name ];
+                    $cbqc_cover_img_url = $_POST[ 'cbqc_cover_img_url' ];
+                    $cbqc_back_img_url = $_POST[ 'cbqc_back_img_url' ];
 
                     // Save the posted value in the database
-                    update_option( 'cbqc_cover_img_url', $opt_val );
+                    update_option( 'cbqc_cover_img_url', $cbqc_cover_img_url );
+                    update_option( 'cbqc_back_img_url', $cbqc_back_img_url );
 
                     // Put an settings updated message on the screen
 		            ?>
-		            <div class="updated"><p><strong><?php _e('settings saved.', 'menu-test' ); ?></strong></p></div>
+		            <div class="updated"><p><strong><?php _e('Settings saved.', 'menu-test' ); ?></strong></p></div>
 		            <?php
                 }
 
@@ -58,8 +60,12 @@ if ( !class_exists( "CBQC_Options" ) ) {
 	            <form name="form1" method="post" action="">
 	            <input type="hidden" name="<?php echo $hidden_field_name; ?>" value="Y">
 
-	            <p><?php _e("Cover Image URL:", 'menu-label' ); ?> 
-	            <input type="text" name="<?php echo $data_field_name; ?>" value="<?php echo $opt_val; ?>" size="20">
+	            <p><?php _e("Front Cover Image URL:", 'menu-label' ); ?> 
+	            <input type="text" name="cbqc_cover_img_url" value="<?php echo $cbqc_cover_img_url; ?>" size="20">
+	            </p>
+
+	            <p><?php _e("Back Cover Image URL:", 'menu-label' ); ?> 
+	            <input type="text" name="cbqc_back_img_url" value="<?php echo $cbqc_back_img_url; ?>" size="20">
 	            </p>
 
 	            <p class="submit">
