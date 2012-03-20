@@ -196,7 +196,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $toc = output_toc($toc_data);
                 
                 // Cover                                                        
-                $back = "<div class='page left last cover'></div>";  
+                // $back = "<div class='page left last cover'></div>";  
 
 				// Assemble parts
 				$book .= "<div id='cbqc_magazine_outr'>\n"; 
@@ -205,7 +205,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $book .= "\t\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
-				$book .= $content;
+				// $book .= $content;
 				$book .= $back;
                 $book .= "\t\t</div>\n";           
 				$book .= "\t</div>\n";

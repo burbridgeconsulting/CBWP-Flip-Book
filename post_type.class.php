@@ -66,7 +66,7 @@ if ( !class_exists( "CBQC_CustomPostTypes" ) ) {
             	
             	// ***** Add Option to Set Cover Image *****//
                 include('cover_image_ui.class.php');
-                $coverImg = new CBQC_CoverImageUI(); 
+                $coverImg = new CBQC_Options(); 
             	
             	
             }
