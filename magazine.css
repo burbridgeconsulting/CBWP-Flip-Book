@@ -2,6 +2,7 @@
 	http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.1.3
 	http://blank1.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.2.1
 	http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.2.1
+	http://lif.local/wp-content/plugins/cbqc_magazine/magazine.css?ver=3.3.1
 */
 
 #cbqc_magazine_outr {
@@ -72,7 +73,6 @@
 
 #cbqc_magazine .toc-items .row {
 	width: 470px;
-	background: palegoldenrod;
 	margin-bottom: 20px;
 	clear: both;
 }
