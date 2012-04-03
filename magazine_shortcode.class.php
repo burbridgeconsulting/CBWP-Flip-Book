@@ -33,7 +33,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             	$is_single = true;   
 
             	$value = get_post_meta($id, $field, $is_single);
-                return "<img src='$value' />";
+                return "<img src='{$value}' alt='{$value}' />";
             }                       
             
             function output_toc($toc_data) { 

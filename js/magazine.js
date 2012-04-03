@@ -43,5 +43,5 @@ jQuery(document).ready(function( $ ) {
         event.stopImmediatePropagation()
         $(this).parent().find('.content').toggle() 
     })
-    
+
 })
