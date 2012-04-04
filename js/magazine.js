@@ -19,16 +19,24 @@ jQuery(document).ready(function( $ ) {
 		next: '.page.right',
 		prev: '.page.left',
 		pageNumbers: true,    
-		before: function(opts) {
+		before: function(opts) {   
+			var pageIndex = opts.curr
+			var pageLeft = $('#cbqc_magazine').find('.page').eq(pageIndex-1)
+			var pageRight = $('#cbqc_magazine').find('.page').eq(pageIndex)
+			var pageImgLeft = pageLeft.find('.img-src').text()
+			var pageImgRight = pageRight.find('.img-src').text()
+			pageLeft.find('img').attr('src', pageImgLeft)
+			pageRight.find('img').attr('src', pageImgRight)
+			
 			var totalPages = $('#cbqc_magazine .page').length + 1
-			// alert('opts.curr = ' + opts.curr + ' | totalPages = ' + totalPages)						
+			// alert('pageIndex = ' + pageIndexcurr + ' | totalPages = ' + totalPages)						
 			if (typeof prevPage === 'undefined') {
 				prevPage = 0
 			}               
 			if ((prevPage == 0) || (totalPages == prevPage)) {
 				$('#cbqc_magazine_outr').animate({ width: '1100px' }, 1200)
 			}                                      
-			else if ((opts.curr == 0) || (opts.curr == totalPages)) {
+			else if ((pageIndex == 0) || (pageIndex == totalPages)) {
 				$('#cbqc_magazine_outr').animate({ width: '550px' }, 1200)
 			}                             
 		},
