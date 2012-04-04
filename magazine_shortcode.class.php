@@ -217,7 +217,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
 				// Assemble parts  
 				$book .= "<div id='cbqc_magazine_outr'>\n"; 
-				$book .= "<div id='magazine_status'>Loading slides...</div>\n";
+				// $book .= "<div id='magazine_status'>Loading slides...</div>\n";
 				$book .= "<p class='book-menu'></p>\n"; 
 				$book .= "\t<div id='cbqc_magazine'>\n";
                 $book .= "\t\t<div class='b-load'>\n";  
