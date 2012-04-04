@@ -4,7 +4,6 @@ jQuery(document).ready(function( $ ) {
         autoCenter: true,
         closed: true,
         covers: true,
-        autoCenter: true,    
 		overlays: false,
         arrows: true,
         manual: false,
