@@ -18,8 +18,22 @@ jQuery(document).ready(function( $ ) {
 		chapterSelector: true,   
 		next: '.page.right',
 		prev: '.page.left',
-		pageNumbers: true,
+		pageNumbers: true,    
+		before: function(opts) {
+			var totalPages = $('#cbqc_magazine .page').length + 1
+			// alert('opts.curr = ' + opts.curr + ' | totalPages = ' + totalPages)						
+			if (typeof prevPage === 'undefined') {
+				prevPage = 0
+			}               
+			if ((prevPage == 0) || (totalPages == prevPage)) {
+				$('#cbqc_magazine_outr').animate({ width: '1100px' }, 1200)
+			}                                      
+			else if ((opts.curr == 0) || (opts.curr == totalPages)) {
+				$('#cbqc_magazine_outr').animate({ width: '550px' }, 1200)
+			}                             
+		},
         after: function(opts){
+			prevPage = opts.curr
             // alert('after! new page index is : ' + opts.curr)                
 			if (opts.curr > 3) {
 				var title = $('#cbqc_magazine .b-page-' + opts.curr + ' .page-title').text()

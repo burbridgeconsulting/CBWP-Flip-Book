@@ -215,15 +215,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 $first = true;  
 
-				// Assemble parts
+				// Assemble parts  
 				$book .= "<div id='cbqc_magazine_outr'>\n"; 
+				$book .= "<div id='magazine_status'>Loading...</div>\n";
 				$book .= "<p class='book-menu'></p>\n"; 
 				$book .= "\t<div id='cbqc_magazine'>\n";
                 $book .= "\t\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
 				$book .= $content;
-                $book .= "\t\t<img class='final-image' src='{$back_image}'  alt='{$back_image}'/></div>\n";           
+                $book .= "\t\t<img id='final-image' src='{$back_image}'  alt='{$back_image}'/></div>\n";           
 				$book .= "\t</div>\n";
                 $book .= "</div>\n"; 
                 
