@@ -1,4 +1,6 @@
-jQuery(document).ready(function( $ ) {
+jQuery(document).ready(function( $ ) { 
+	
+	imgsLoaded = new Array()
 	
     $('#cbqc_magazine').booklet({
         autoCenter: true,
@@ -20,13 +22,19 @@ jQuery(document).ready(function( $ ) {
 		prev: '.page.left',
 		pageNumbers: true,    
 		before: function(opts) {   
-			var pageIndex = opts.curr
-			var pageLeft = $('#cbqc_magazine').find('.page').eq(pageIndex-1)
-			var pageRight = $('#cbqc_magazine').find('.page').eq(pageIndex)
-			var pageImgLeft = pageLeft.find('.img-src').text()
-			var pageImgRight = pageRight.find('.img-src').text()
-			pageLeft.find('img').attr('src', pageImgLeft)
-			pageRight.find('img').attr('src', pageImgRight)
+			var pageIndex = opts.curr 
+			
+			function loadImg(img) {
+				if (img.attr('data-img-loaded') == '0') {
+					img.attr('src', img.attr('data-img-url'))
+					img.attr('data-img-loaded', '1')                                                      					
+				}
+			}
+			
+			loadImg($('#cbqc_magazine').find('.page').eq(pageIndex-1).find('img'))
+			loadImg($('#cbqc_magazine').find('.page').eq(pageIndex).find('img'))
+						
+			imgsLoaded[pageIndex] = true
 			
 			var totalPages = $('#cbqc_magazine .page').length + 1
 			// alert('pageIndex = ' + pageIndexcurr + ' | totalPages = ' + totalPages)						

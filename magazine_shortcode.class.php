@@ -162,7 +162,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
 
                 if (strlen($image) > 0) {                                                       
 					$spacer = cbqc_plugin_url() . "images/spacer.gif";
-					$content .= "\t\t\t<div class='image'><span class='img-src'>{$image}</span><img src='$spacer'  alt='{$value}'/></div>\n";
+					$content .= "\t\t\t<div class='image'><span class='img-src'>{$image}</span><img data-img-loaded='0' data-img-url='{$image}' src='$spacer'  alt='{$value}'/></div>\n";
                 }                                                
                 
                 $content .= "\t\t</div>\n";           
