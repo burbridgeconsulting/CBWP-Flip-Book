@@ -1,6 +1,6 @@
 <?php
-if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
-	class CBQC_MagazineExtraFields {
+if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
+	class cbwp_MagazineExtraFields {
      
         function __construct() {
 
@@ -10,7 +10,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
 
             ******************************/
 
-            $prefix = 'cbqc_';
+            $prefix = 'cbwp_';
 
             $meta_boxes = array();
 
@@ -140,7 +140,7 @@ if ( !class_exists( "CBQC_MagazineExtraFields" ) ) {
 
             require_once('lib/meta_box.class.php');
             foreach ($meta_boxes as $meta_box) {
-            	$my_box = new CBQC_MetaBox($meta_box);
+            	$my_box = new cbwp_MetaBox($meta_box);
             }
 
         }

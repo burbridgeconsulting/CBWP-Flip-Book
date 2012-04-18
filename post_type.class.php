@@ -1,6 +1,6 @@
 <?php
-if ( !class_exists( "CBQC_CustomPostTypes" ) ) {
-	class CBQC_CustomPostTypes {
+if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
+	class cbwp_CustomPostTypes {
      
         function __construct() {
 
@@ -66,7 +66,7 @@ if ( !class_exists( "CBQC_CustomPostTypes" ) ) {
             	
             	// ***** Add Option to Set Cover Image *****//
                 include('cover_image_ui.class.php');
-                $coverImg = new CBQC_Options(); 
+                $coverImg = new cbwp_Options(); 
             	
             	
             }

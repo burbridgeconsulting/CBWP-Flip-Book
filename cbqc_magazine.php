@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: CBQC Magazine
+Plugin Name: CBWP Magazine
 Plugin URI: 
 Description: 
 Author: Chris Burbridge
@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 require_once('magazine.class.php');
 
 //instantiate the class
-if (class_exists('cbqc_magazine')) {
-    $cbqc_magazine_var = new cbqc_magazine();
+if (class_exists('cbwp_magazine')) {
+    $cbwp_magazine_var = new cbwp_magazine();
 }
                              

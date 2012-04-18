@@ -1,17 +1,17 @@
 <?php
 
-if (!class_exists('cbqc_magazine')) {
-    class cbqc_magazine {
+if (!class_exists('cbwp_magazine')) {
+    class cbwp_magazine {
         //This is where the class variables go, don't forget to use @var to tell what they're for
         /**
         * @var string The options string name for this plugin
         */
-        var $optionsName = 'cbqc_magazine_options';
+        var $optionsName = 'cbwp_magazine_options';
         
         /**
         * @var string $localizationDomain Domain used for localization
         */
-        var $localizationDomain = "cbqc_magazine";
+        var $localizationDomain = "cbwp_magazine";
         
         /**
         * @var string $pluginurl The path to this plugin
@@ -31,7 +31,7 @@ if (!class_exists('cbqc_magazine')) {
         /**
         * PHP 4 Compatible Constructor
         */
-        function cbqc_magazine() {$this->__construct();}
+        function cbwp_magazine() {$this->__construct();}
         
         /**
         * PHP 5 Constructor
@@ -54,15 +54,15 @@ if (!class_exists('cbqc_magazine')) {
             
             // Add custom post type and taxonomies  
             include('post_type.class.php');
-            $postType = new CBQC_CustomPostTypes(); 
+            $postType = new cbwp_CustomPostTypes(); 
             
             // Add custom post type and taxonomies  
             include('magazine_extra_fields.class.php');
-            $postType = new CBQC_MagazineExtraFields(); 
+            $postType = new cbwp_MagazineExtraFields(); 
             
             // Define shortcode
             include('magazine_shortcode.class.php');
-            $shortCode = new CBQC_MagazineShortCode(); 
+            $shortCode = new cbwp_MagazineShortCode(); 
             
             // add_action("admin_menu", array(&$this,"admin_menu_link"));
             
@@ -79,14 +79,14 @@ if (!class_exists('cbqc_magazine')) {
         }
                                                  
         function add_js() {   
-            wp_enqueue_script( 'cbqc_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core'), NULL, true );
-            wp_enqueue_script( 'cbqc_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core'), NULL, true );
-            wp_enqueue_script( 'cbqc_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'jquery-ui-core','cbqc_booklet'), NULL, true );
+            wp_enqueue_script( 'cbwp_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core'), NULL, true );
+            wp_enqueue_script( 'cbwp_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core'), NULL, true );
+            wp_enqueue_script( 'cbwp_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'jquery-ui-core','cbwp_booklet'), NULL, true );
         }
               
         function add_css() {                                                           
-            wp_enqueue_style( 'cbqc_jquery_booklet', $this->pluginurl . 'jquery.booklet.1.2.0.css' );
-            wp_enqueue_style( 'cbqc_magazine_styles', $this->pluginurl . 'magazine.css' );
+            wp_enqueue_style( 'cbwp_jquery_booklet', $this->pluginurl . 'jquery.booklet.1.2.0.css' );
+            wp_enqueue_style( 'cbwp_magazine_styles', $this->pluginurl . 'magazine.css' );
         }
         
         /**
@@ -138,11 +138,11 @@ if (!class_exists('cbqc_magazine')) {
         * Adds settings/options page
         */
         function admin_options_page() { 
-            if($_POST['cbqc_magazine_save']){
-                if (! wp_verify_nonce($_POST['_wpnonce'], 'cbqc_magazine-update-options') ) die('Whoops! There was a problem with the data you posted. Please go back and try again.'); 
-                $this->options['cbqc_magazine_path'] = $_POST['cbqc_magazine_path'];                   
-                $this->options['cbqc_magazine_allowed_groups'] = $_POST['cbqc_magazine_allowed_groups'];
-                $this->options['cbqc_magazine_enabled'] = ($_POST['cbqc_magazine_enabled']=='on')?true:false;
+            if($_POST['cbwp_magazine_save']){
+                if (! wp_verify_nonce($_POST['_wpnonce'], 'cbwp_magazine-update-options') ) die('Whoops! There was a problem with the data you posted. Please go back and try again.'); 
+                $this->options['cbwp_magazine_path'] = $_POST['cbwp_magazine_path'];                   
+                $this->options['cbwp_magazine_allowed_groups'] = $_POST['cbwp_magazine_allowed_groups'];
+                $this->options['cbwp_magazine_enabled'] = ($_POST['cbwp_magazine_enabled']=='on')?true:false;
                                         
                 $this->saveAdminOptions();
                 
@@ -151,24 +151,24 @@ if (!class_exists('cbqc_magazine')) {
 ?>                                   
                 <div class="wrap">
                 <h2>Magazine Settings</h2>
-                <form method="post" id="cbqc_magazine_options">
-                <?php wp_nonce_field('cbqc_magazine-update-options'); ?>
+                <form method="post" id="cbwp_magazine_options">
+                <?php wp_nonce_field('cbwp_magazine-update-options'); ?>
                     <table width="100%" cellspacing="2" cellpadding="5" class="form-table"> 
                         <tr valign="top"> 
                             <th width="33%" scope="row"><?php _e('Option 1:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbqc_magazine_path" type="text" id="cbqc_magazine_path" size="45" value="<?php echo $this->options['cbqc_magazine_path'] ;?>"/>
+                            <td><input name="cbwp_magazine_path" type="text" id="cbwp_magazine_path" size="45" value="<?php echo $this->options['cbwp_magazine_path'] ;?>"/>
                         </td> 
                         </tr>
                         <tr valign="top"> 
                             <th width="33%" scope="row"><?php _e('Option 2:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbqc_magazine_allowed_groups" type="text" id="cbqc_magazine_allowed_groups" value="<?php echo $this->options['cbqc_magazine_allowed_groups'] ;?>"/>
+                            <td><input name="cbwp_magazine_allowed_groups" type="text" id="cbwp_magazine_allowed_groups" value="<?php echo $this->options['cbwp_magazine_allowed_groups'] ;?>"/>
                             </td> 
                         </tr>
                         <tr valign="top"> 
-                            <th><label for="cbqc_magazine_enabled"><?php _e('CheckBox #1:', $this->localizationDomain); ?></label></th><td><input type="checkbox" id="cbqc_magazine_enabled" name="cbqc_magazine_enabled" <?=($this->options['cbqc_magazine_enabled']==true)?'checked="checked"':''?>></td>
+                            <th><label for="cbwp_magazine_enabled"><?php _e('CheckBox #1:', $this->localizationDomain); ?></label></th><td><input type="checkbox" id="cbwp_magazine_enabled" name="cbwp_magazine_enabled" <?=($this->options['cbwp_magazine_enabled']==true)?'checked="checked"':''?>></td>
                         </tr>
                         <tr>
-                            <th colspan=2><input type="submit" name="cbqc_magazine_save" value="Save" /></th>
+                            <th colspan=2><input type="submit" name="cbwp_magazine_save" value="Save" /></th>
                         </tr>
                     </table>
                 </form>

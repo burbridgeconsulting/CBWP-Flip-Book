@@ -1,15 +1,15 @@
 <?php
-if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
-	class CBQC_MagazineShortCode {
+if ( !class_exists( "cbwp_MagazineShortCode" ) ) {
+	class cbwp_MagazineShortCode {
      
         function __construct() { 
 	
-	      	function cbqc_plugin_url() {
+	      	function cbwp_plugin_url() {
 				$pluginurl = plugins_url() . '/' . dirname(plugin_basename(__FILE__)).'/';
 				return $pluginurl;
 			}
 	
-            function cbqc_show_field($field, $id = NULL) {  
+            function cbwp_show_field($field, $id = NULL) {  
             	if ($id == NULL) {
             		global $post;
             		$id = $post->ID;
@@ -19,7 +19,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             	echo $value;
             }  
 
-            function cbqc_get_field($field, $id = NULL) {            
+            function cbwp_get_field($field, $id = NULL) {            
             	global $post;
             	if ($id == NULL) {
             		global $post;
@@ -30,7 +30,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             	return $value;
             }  
 
-            function cbqc_get_image_field($field, $id = NULL) {            
+            function cbwp_get_image_field($field, $id = NULL) {            
             	global $post;
             	if ($id == NULL) {
             		global $post;
@@ -39,7 +39,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             	$is_single = true;   
 
             	$value = get_post_meta($id, $field, $is_single); 
-				if ($value == '') $value = cbqc_plugin_url() . "images/spacer.gif";
+				if ($value == '') $value = cbwp_plugin_url() . "images/spacer.gif";
                 return "<img src='{$value}' alt='{$value}' />";
             }                       
             
@@ -54,7 +54,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                         
                         $title = $toc_item['title'];
                         $image = $toc_item['img'];
-						if ($image == '') $image = cbqc_plugin_url() . "images/spacer.gif";
+						if ($image == '') $image = cbwp_plugin_url() . "images/spacer.gif";
 
                         $spread_num = $toc_item['spread_num']; 
                         
@@ -131,28 +131,28 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
             }
             
             function generate_page($side, $id, $title) {
-                $image = cbqc_get_field("cbqc_image-{$side}", $id);   
-				if ($image == '') $image = cbqc_plugin_url() . "images/spacer.gif";
+                $image = cbwp_get_field("cbwp_image-{$side}", $id);   
+				if ($image == '') $image = cbwp_plugin_url() . "images/spacer.gif";
 						
 				$style = '';
                 // if (strlen($image) > 0) {
                 //     $style  = " style='background-image: url(\"$image\");' ";
                 // }                                                
      			$rel = NULL;
-				if (($side == 'left') and (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on')) {
+				if (($side == 'left') and (cbwp_get_field('cbwp_cb-show-in-toc', $id) == 'on')) {
 					$rel = " rel='{$title}'";
 				}
                 $content = "\t\t<div class='page {$side}'{$style}{$rel}>\n";  
 				$content .= "<h3 class='page-title'>$title</h3>\n";
 				
-                $copy = cbqc_get_field("cbqc_main-text-{$side}", $id);                  
+                $copy = cbwp_get_field("cbwp_main-text-{$side}", $id);                  
                 if (strlen($copy) > 0) {
                     $content .= "\t\t\t<div class='copy'>\n";
 					$content .= "\t\t\t$copy";
                     $content .= "\t\t\t</div>\n";
                 }
                 
-                $popup = cbqc_get_field("cbqc_popup-text-{$side}", $id);                  
+                $popup = cbwp_get_field("cbwp_popup-text-{$side}", $id);                  
                 if (strlen($popup) > 0) {
                     $content .= "<div class='popup'>";
                     $content .= "<p class='msg'>Read About</p>";
@@ -161,7 +161,7 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 }
 
                 if (strlen($image) > 0) {                                                       
-					$spacer = cbqc_plugin_url() . "images/spacer.gif";
+					$spacer = cbwp_plugin_url() . "images/spacer.gif";
 					$content .= "\t\t\t<div class='image'><span class='img-src'>{$image}</span><img data-img-loaded='0' data-img-url='{$image}' src='$spacer'  alt='{$value}'/></div>\n";
                 }                                                
                 
@@ -180,8 +180,8 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 $spreads = array_reverse( get_posts($args) );        
 
                 // Cover                                                        
-                $cover_image = get_option('cbqc_cover_img_url');  
-				if ($cover_image == '') $cover_image = cbqc_plugin_url() . "images/spacer.gif";
+                $cover_image = get_option('cbwp_cover_img_url');  
+				if ($cover_image == '') $cover_image = cbwp_plugin_url() . "images/spacer.gif";
 						
                 $first = true;  
                 $cover = "<div class='page right first cover'><img src='{$cover_image}'  alt='{$value}'/></div>";  
@@ -194,9 +194,9 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                     $id = $spread->ID;                     
                     
                     $spread_title  = $spread->post_title;                     
-                    $section_title  = cbqc_get_field('cbqc_section-title', $id);   
-                    if (cbqc_get_field('cbqc_cb-show-in-toc', $id) == 'on') {
-                        $img    = cbqc_get_field('cbqc_image-toc', $id);                                            
+                    $section_title  = cbwp_get_field('cbwp_section-title', $id);   
+                    if (cbwp_get_field('cbwp_cb-show-in-toc', $id) == 'on') {
+                        $img    = cbwp_get_field('cbwp_image-toc', $id);                                            
                         
                         $data = array("img" => $img, "title" => $section_title, "spread_num" => "{$spread_num}");
                         
@@ -211,16 +211,16 @@ if ( !class_exists( "CBQC_MagazineShortCode" ) ) {
                 
                 // Cover                                                        
                 // Cover                                                        
-                $back_image = get_option('cbqc_back_img_url');    
-				if ($back_image == '') $back_image = cbqc_plugin_url() . "images/spacer.gif";
+                $back_image = get_option('cbwp_back_img_url');    
+				if ($back_image == '') $back_image = cbwp_plugin_url() . "images/spacer.gif";
 
                 $first = true;  
 
 				// Assemble parts  
-				$book .= "<div id='cbqc_magazine_outr'>\n"; 
+				$book .= "<div id='cbwp_magazine_outr'>\n"; 
 				// $book .= "<div id='magazine_status'>Loading slides...</div>\n";
 				$book .= "<p class='book-menu'></p>\n"; 
-				$book .= "\t<div id='cbqc_magazine'>\n";
+				$book .= "\t<div id='cbwp_magazine'>\n";
                 $book .= "\t\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
