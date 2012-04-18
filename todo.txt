@@ -1,4 +1,38 @@
-LIF To Do
-=========
+ADD OPTIONS
 
-Only load scripts if needed.
+Based on these:
+
+	autoCenter: true,
+	closed: true,
+	covers: true,
+	overlays: false,
+	arrows: true,
+	manual: false,
+	tabs: false,
+	hash: false,
+	keyboard: true,
+	height: 676,
+	width: 1100,
+	pagePadding: 0,
+	startingPage: 0,
+	menu: '.book-menu',
+	chapterSelector: true,   
+	next: '.page.right',
+	prev: '.page.left',
+	pageNumbers: true,    
+
+Now, this means I need to create a more friendly options panel                 
+
+SORTING
+
+I think we need sorting. What about this:
+http://soulsizzle.com/jquery/create-an-ajax-sorter-for-wordpress-custom-post-types/
+
+Here is Google search I did:
+wordpress code to sort posts jquery ui
+
+DOCUMENTATION
+
+Must say what it does in general
+Explain 
+

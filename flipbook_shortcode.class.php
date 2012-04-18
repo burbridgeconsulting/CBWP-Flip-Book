@@ -1,6 +1,6 @@
 <?php
 if ( !class_exists( "cbwp_FlipBookShortCode" ) ) {
-	class cbwp_Flip BookShortCode {
+	class cbwp_FlipBookShortCode {
      
         function __construct() { 
 	
@@ -228,7 +228,7 @@ if ( !class_exists( "cbwp_FlipBookShortCode" ) ) {
                 $book .= "\t\t<img id='final-image' src='{$back_image}'  alt='{$back_image}'/></div>\n";           
 				$book .= "\t</div>\n";
                 $book .= "</div>\n"; 
-                
+
 				return $book;
             }
             add_shortcode( 'flipbook', 'flipbook_func' );
