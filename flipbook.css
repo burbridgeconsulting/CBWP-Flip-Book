@@ -1,53 +1,53 @@
 /* @override 
-	http://lif.local/wp-content/plugins/cbwp_magazine/magazine.css?ver=3.1.3
-	http://blank1.local/wp-content/plugins/cbwp_magazine/magazine.css?ver=3.2.1
-	http://lif.local/wp-content/plugins/cbwp_magazine/magazine.css?ver=3.2.1
-	http://lif.local/wp-content/plugins/cbwp_magazine/magazine.css?ver=3.3.1
+	http://lif.local/wp-content/plugins/cbwp_flipbook/flipbook.css?ver=3.1.3
+	http://blank1.local/wp-content/plugins/cbwp_flipbook/flipbook.css?ver=3.2.1
+	http://lif.local/wp-content/plugins/cbwp_flipbook/flipbook.css?ver=3.2.1
+	http://lif.local/wp-content/plugins/cbwp_flipbook/flipbook.css?ver=3.3.1
 */
 
-#cbwp_magazine_outr {
+#cbwp_flipbook_outr {
 	font-family: Optima;
 	color: #463F28;
 	line-height: 1.8;
 	font-size: 16px;
 }
 
-#cbwp_magazine .page-toc.left {
+#cbwp_flipbook .page-toc.left {
 	text-align: right;
 	padding-right: .63em;
 }	
 
-#cbwp_magazine .page-toc.right {
+#cbwp_flipbook .page-toc.right {
 	padding-left: .5em;
 }	
 
-#cbwp_magazine .copy {
+#cbwp_flipbook .copy {
 	padding: 1em;
 	height: 100%;
 }
 
-#cbwp_magazine .popup {
+#cbwp_flipbook .popup {
 	width: 200px;
 	right: 2em;
 	position: absolute;
 	bottom: 2em;
 }
 
-#cbwp_magazine .popup .msg {
+#cbwp_flipbook .popup .msg {
 	position: absolute;
 	bottom: 0;
 	margin: 0;
 }
 
-#cbwp_magazine .left .popup .msg {
+#cbwp_flipbook .left .popup .msg {
 	left: 0;
 }
 
-#cbwp_magazine .right .popup .msg {
+#cbwp_flipbook .right .popup .msg {
 	right: 0;
 }
 
-#cbwp_magazine .popup .content {
+#cbwp_flipbook .popup .content {
 	display: none;
 	border: 1px solid #aaa;
 	background-color: #ddd;
@@ -56,28 +56,28 @@
 	position: relative;
 }
 
-#cbwp_magazine .left .popup {
+#cbwp_flipbook .left .popup {
 	left: 1em;	
 }
 
-#cbwp_magazine .right .popup {
+#cbwp_flipbook .right .popup {
 	right: 1em;	
 }
 
 
 /* TOC */
-#cbwp_magazine .toc-items {
+#cbwp_flipbook .toc-items {
 	width: 430px;
 	margin: 38px auto 0 auto;
 }
 
-#cbwp_magazine .toc-items .row {
+#cbwp_flipbook .toc-items .row {
 	width: 470px;
 	margin-bottom: 20px;
 	clear: both;
 }
 
-#cbwp_magazine .toc-item {
+#cbwp_flipbook .toc-item {
 	float: left;
 	width: 120px;
 	text-align: center;
@@ -86,25 +86,25 @@
 	position: relative;
 }
 
-#cbwp_magazine .toc-item.first {
+#cbwp_flipbook .toc-item.first {
 	margin-left: 0;
 }
 
-#cbwp_magazine .toc-item p {
+#cbwp_flipbook .toc-item p {
 	line-height: 1.25;
 	text-align: center;
 	margin-top: 3px;
 	font-size: 14px;
 }
 
-#cbwp_magazine .toc-item img {
+#cbwp_flipbook .toc-item img {
 	width: 130px;
 	height: 178px;
 	margin-bottom: 8px;
 	display: block;
 }
 
-#cbwp_magazine #toc h2 {
+#cbwp_flipbook #toc h2 {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 18px;
@@ -112,18 +112,18 @@
 	margin-bottom: 51px;
 }
 
-#cbwp_magazine #toc .left h2 {
+#cbwp_flipbook #toc .left h2 {
 	text-align: right;
 	margin-right: 9px;
 }
 
-#cbwp_magazine #toc .right h2 {
+#cbwp_flipbook #toc .right h2 {
 	text-align: left;
 	margin-left: 8px;
 }
 
 	.booklet .b-page-cover  {padding:0; width:100%; height:100%; background: #fff;}
 
-#cbwp_magazine .page {
+#cbwp_flipbook .page {
 	height: 2000px;
 }

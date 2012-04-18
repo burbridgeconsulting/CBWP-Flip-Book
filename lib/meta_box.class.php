@@ -11,7 +11,7 @@ if ( !class_exists( "cbwp_MetaBox" ) ) {
     		
     		// Add custom admin script
     		if (is_admin()) {
-    		    wp_enqueue_script('cbwp_magazine_admin', WP_PLUGIN_URL . '/cbwp_magazine/js/admin.js', array('jquery'));
+    		    wp_enqueue_script('cbwp_flipbook_admin', WP_PLUGIN_URL . '/cbwp_flipbook/js/admin.js', array('jquery'));
     		}
 
     		// fix upload bug: http://www.hashbangcode.com/blog/add-enctype-wordpress-post-and-page-forms-471.html
@@ -70,7 +70,7 @@ if ( !class_exists( "cbwp_MetaBox" ) ) {
                 }
 
                 if (isset( $field['img'] )) {
-                    $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbwp_magazine/images/" . $field['img'] . '" /';
+                    $label_area .= '<img src="' . WP_PLUGIN_URL . "/cbwp_flipbook/images/" . $field['img'] . '" /';
                 }
 
     			echo '<tr>',
@@ -121,7 +121,7 @@ if ( !class_exists( "cbwp_MetaBox" ) ) {
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>';
     					break;
     				case 'image':
-    					echo $meta ? "<p style='text-align: right;'><a href=''><img class='delete' src='" . WP_PLUGIN_URL . "/cbwp_magazine/images/delete.png' /></a></p><img class='field-img' src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
+    					echo $meta ? "<p style='text-align: right;'><a href=''><img class='delete' src='" . WP_PLUGIN_URL . "/cbwp_flipbook/images/delete.png' /></a></p><img class='field-img' src=\"$meta\" /><br /><span class='url'>$meta</span><br />" : '', '<input type="file" name="', $field['id'], '" id="', $field['id'], '" />',
     						'<br />', $field['bottom_note'], ' &nbsp;<span style="color: #eee">', $field['id'], '</span>',
     						'<input type="hidden" name="delete-', $field['id'], '" id="delete-', $field['id'], '" value="false" />';
     					break;    
@@ -147,7 +147,7 @@ if ( !class_exists( "cbwp_MetaBox" ) ) {
     		}
 
     		// check permissions
-    		if ('magazine' == $_POST['post_type']) {
+    		if ('flipbook' == $_POST['post_type']) {
     			if (!current_user_can('edit_page', $post_id)) {
     				return $post_id;
     			}

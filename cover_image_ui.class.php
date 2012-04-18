@@ -8,11 +8,11 @@ if ( !class_exists( "cbwp_Options" ) ) {
         
         function plugin_menu() {
         	add_submenu_page(
-        	    'edit.php?post_type=magazine', 
-        	    'Magazine Options', 
-        	    'Magazine Options', 
+        	    'edit.php?post_type=flipbook', 
+        	    'Flip Book Options', 
+        	    'Flip Book Options', 
         	    'manage_options',
-        	    'magazine_options', 
+        	    'flipbook_options', 
         	    array(&$this, 'plugin_options')
             );
         }                   
@@ -52,7 +52,7 @@ if ( !class_exists( "cbwp_Options" ) ) {
                 echo '<div class="wrap">';
 
                 // header
-                echo "<h2>" . __( 'Magazine Plugin Settings', 'magazine' ) . "</h2>";
+                echo "<h2>" . __( 'Flip Book Plugin Settings', 'flipbook' ) . "</h2>";
 
                 // settings form
                 ?>

@@ -1,17 +1,17 @@
 <?php
 
-if (!class_exists('cbwp_magazine')) {
-    class cbwp_magazine {
+if (!class_exists('cbwp_flipbook')) {
+    class cbwp_flipbook {
         //This is where the class variables go, don't forget to use @var to tell what they're for
         /**
         * @var string The options string name for this plugin
         */
-        var $optionsName = 'cbwp_magazine_options';
+        var $optionsName = 'cbwp_flipbook_options';
         
         /**
         * @var string $localizationDomain Domain used for localization
         */
-        var $localizationDomain = "cbwp_magazine";
+        var $localizationDomain = "cbwp_flipbook";
         
         /**
         * @var string $pluginurl The path to this plugin
@@ -31,7 +31,7 @@ if (!class_exists('cbwp_magazine')) {
         /**
         * PHP 4 Compatible Constructor
         */
-        function cbwp_magazine() {$this->__construct();}
+        function cbwp_flipbook() {$this->__construct();}
         
         /**
         * PHP 5 Constructor
@@ -57,12 +57,12 @@ if (!class_exists('cbwp_magazine')) {
             $postType = new cbwp_CustomPostTypes(); 
             
             // Add custom post type and taxonomies  
-            include('magazine_extra_fields.class.php');
-            $postType = new cbwp_MagazineExtraFields(); 
+            include('flipbook_extra_fields.class.php');
+            $postType = new cbwp_FlipBookExtraFields(); 
             
             // Define shortcode
-            include('magazine_shortcode.class.php');
-            $shortCode = new cbwp_MagazineShortCode(); 
+            include('flipbook_shortcode.class.php');
+            $shortCode = new cbwp_FlipBookShortCode(); 
             
             // add_action("admin_menu", array(&$this,"admin_menu_link"));
             
@@ -81,12 +81,12 @@ if (!class_exists('cbwp_magazine')) {
         function add_js() {   
             wp_enqueue_script( 'cbwp_easing', $this->pluginurl . 'js/jquery.easing.1.3.js', array('jquery', 'jquery-ui-core'), NULL, true );
             wp_enqueue_script( 'cbwp_booklet', $this->pluginurl . 'js/jquery.booklet.1.2.0.min.js', array('jquery', 'jquery-ui-core'), NULL, true );
-            wp_enqueue_script( 'cbwp_magazine_js', $this->pluginurl . 'js/magazine.js', array('jquery', 'jquery-ui-core','cbwp_booklet'), NULL, true );
+            wp_enqueue_script( 'cbwp_flipbook_js', $this->pluginurl . 'js/flipbook.js', array('jquery', 'jquery-ui-core','cbwp_booklet'), NULL, true );
         }
               
         function add_css() {                                                           
             wp_enqueue_style( 'cbwp_jquery_booklet', $this->pluginurl . 'jquery.booklet.1.2.0.css' );
-            wp_enqueue_style( 'cbwp_magazine_styles', $this->pluginurl . 'magazine.css' );
+            wp_enqueue_style( 'cbwp_flipbook_styles', $this->pluginurl . 'flipbook.css' );
         }
         
         /**
@@ -118,7 +118,7 @@ if (!class_exists('cbwp_magazine')) {
         function admin_menu_link() {
             //If you change this from add_options_page, MAKE SURE you change the filter_plugin_actions function (below) to
             //reflect the page filename (ie - options-general.php) of the page your plugin is under!
-            add_options_page('Magazine', 'Magazine', 10, basename(__FILE__), array(&$this,'admin_options_page'));
+            add_options_page('Flip Book', 'Flip Book', 10, basename(__FILE__), array(&$this,'admin_options_page'));
             add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array(&$this, 'filter_plugin_actions'), 10, 2 );
         }
         
@@ -138,11 +138,11 @@ if (!class_exists('cbwp_magazine')) {
         * Adds settings/options page
         */
         function admin_options_page() { 
-            if($_POST['cbwp_magazine_save']){
-                if (! wp_verify_nonce($_POST['_wpnonce'], 'cbwp_magazine-update-options') ) die('Whoops! There was a problem with the data you posted. Please go back and try again.'); 
-                $this->options['cbwp_magazine_path'] = $_POST['cbwp_magazine_path'];                   
-                $this->options['cbwp_magazine_allowed_groups'] = $_POST['cbwp_magazine_allowed_groups'];
-                $this->options['cbwp_magazine_enabled'] = ($_POST['cbwp_magazine_enabled']=='on')?true:false;
+            if($_POST['cbwp_flipbook_save']){
+                if (! wp_verify_nonce($_POST['_wpnonce'], 'cbwp_flipbook-update-options') ) die('Whoops! There was a problem with the data you posted. Please go back and try again.'); 
+                $this->options['cbwp_flipbook_path'] = $_POST['cbwp_flipbook_path'];                   
+                $this->options['cbwp_flipbook_allowed_groups'] = $_POST['cbwp_flipbook_allowed_groups'];
+                $this->options['cbwp_flipbook_enabled'] = ($_POST['cbwp_flipbook_enabled']=='on')?true:false;
                                         
                 $this->saveAdminOptions();
                 
@@ -150,25 +150,25 @@ if (!class_exists('cbwp_magazine')) {
             }
 ?>                                   
                 <div class="wrap">
-                <h2>Magazine Settings</h2>
-                <form method="post" id="cbwp_magazine_options">
-                <?php wp_nonce_field('cbwp_magazine-update-options'); ?>
+                <h2>Flip Book Settings</h2>
+                <form method="post" id="cbwp_flipbook_options">
+                <?php wp_nonce_field('cbwp_flipbook-update-options'); ?>
                     <table width="100%" cellspacing="2" cellpadding="5" class="form-table"> 
                         <tr valign="top"> 
                             <th width="33%" scope="row"><?php _e('Option 1:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbwp_magazine_path" type="text" id="cbwp_magazine_path" size="45" value="<?php echo $this->options['cbwp_magazine_path'] ;?>"/>
+                            <td><input name="cbwp_flipbook_path" type="text" id="cbwp_flipbook_path" size="45" value="<?php echo $this->options['cbwp_flipbook_path'] ;?>"/>
                         </td> 
                         </tr>
                         <tr valign="top"> 
                             <th width="33%" scope="row"><?php _e('Option 2:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbwp_magazine_allowed_groups" type="text" id="cbwp_magazine_allowed_groups" value="<?php echo $this->options['cbwp_magazine_allowed_groups'] ;?>"/>
+                            <td><input name="cbwp_flipbook_allowed_groups" type="text" id="cbwp_flipbook_allowed_groups" value="<?php echo $this->options['cbwp_flipbook_allowed_groups'] ;?>"/>
                             </td> 
                         </tr>
                         <tr valign="top"> 
-                            <th><label for="cbwp_magazine_enabled"><?php _e('CheckBox #1:', $this->localizationDomain); ?></label></th><td><input type="checkbox" id="cbwp_magazine_enabled" name="cbwp_magazine_enabled" <?=($this->options['cbwp_magazine_enabled']==true)?'checked="checked"':''?>></td>
+                            <th><label for="cbwp_flipbook_enabled"><?php _e('CheckBox #1:', $this->localizationDomain); ?></label></th><td><input type="checkbox" id="cbwp_flipbook_enabled" name="cbwp_flipbook_enabled" <?=($this->options['cbwp_flipbook_enabled']==true)?'checked="checked"':''?>></td>
                         </tr>
                         <tr>
-                            <th colspan=2><input type="submit" name="cbwp_magazine_save" value="Save" /></th>
+                            <th colspan=2><input type="submit" name="cbwp_flipbook_save" value="Save" /></th>
                         </tr>
                     </table>
                 </form>

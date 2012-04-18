@@ -2,7 +2,7 @@ jQuery(document).ready(function( $ ) {
 	
 	imgsLoaded = new Array()
 	
-    $('#cbwp_magazine').booklet({
+    $('#cbwp_flipbook').booklet({
         autoCenter: true,
         closed: true,
         covers: true,
@@ -31,29 +31,29 @@ jQuery(document).ready(function( $ ) {
 				}
 			}
 			
-			loadImg($('#cbwp_magazine').find('.page').eq(pageIndex-1).find('img'))
-			loadImg($('#cbwp_magazine').find('.page').eq(pageIndex).find('img'))
+			loadImg($('#cbwp_flipbook').find('.page').eq(pageIndex-1).find('img'))
+			loadImg($('#cbwp_flipbook').find('.page').eq(pageIndex).find('img'))
 						
 			imgsLoaded[pageIndex] = true
 			
-			var totalPages = $('#cbwp_magazine .page').length + 1
+			var totalPages = $('#cbwp_flipbook .page').length + 1
 			// alert('pageIndex = ' + pageIndexcurr + ' | totalPages = ' + totalPages)						
 			if (typeof prevPage === 'undefined') {
 				prevPage = 0
 			}               
 			if ((prevPage == 0) || (totalPages == prevPage)) {
-				$('#cbwp_magazine_outr').animate({ width: '1100px' }, 1200)
+				$('#cbwp_flipbook_outr').animate({ width: '1100px' }, 1200)
 			}                                      
 			else if ((pageIndex == 0) || (pageIndex == totalPages)) {
-				$('#cbwp_magazine_outr').animate({ width: '550px' }, 1200)
+				$('#cbwp_flipbook_outr').animate({ width: '550px' }, 1200)
 			}                             
 		},
         after: function(opts){
 			prevPage = opts.curr
             // alert('after! new page index is : ' + opts.curr)                
 			if (opts.curr > 3) {
-				var title = $('#cbwp_magazine .b-page-' + opts.curr + ' .page-title').text()
-				$('#cbwp_magazine_outr .b-current').text(title)
+				var title = $('#cbwp_flipbook .b-page-' + opts.curr + ' .page-title').text()
+				$('#cbwp_flipbook_outr .b-current').text(title)
 			}
         }            
     })    
@@ -64,11 +64,11 @@ jQuery(document).ready(function( $ ) {
 		event.preventDefault() 
 
 	    var pageNum = parseInt( $(this).attr('href') )
-	    $('#cbwp_magazine').booklet( pageNum )
+	    $('#cbwp_flipbook').booklet( pageNum )
 	})
     
     // Popup display
-    $('#cbwp_magazine .popup').click(function(event) {
+    $('#cbwp_flipbook .popup').click(function(event) {
         event.stopImmediatePropagation()
         $(this).parent().find('.content').toggle() 
     })

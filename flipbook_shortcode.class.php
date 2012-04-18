@@ -1,6 +1,6 @@
 <?php
-if ( !class_exists( "cbwp_MagazineShortCode" ) ) {
-	class cbwp_MagazineShortCode {
+if ( !class_exists( "cbwp_FlipBookShortCode" ) ) {
+	class cbwp_Flip BookShortCode {
      
         function __construct() { 
 	
@@ -170,9 +170,9 @@ if ( !class_exists( "cbwp_MagazineShortCode" ) ) {
                 return $content;
             }
 
-            function magazine_func( $atts ) {
+            function flipbook_func( $atts ) {
                 $args = array(           
-                    'post_type' => 'magazine',
+                    'post_type' => 'flipbook',
                     'orderby' => 'menu_order',
                     'numberposts' => '-1', 
 					'post_status' => 'publish',
@@ -217,10 +217,10 @@ if ( !class_exists( "cbwp_MagazineShortCode" ) ) {
                 $first = true;  
 
 				// Assemble parts  
-				$book .= "<div id='cbwp_magazine_outr'>\n"; 
-				// $book .= "<div id='magazine_status'>Loading slides...</div>\n";
+				$book .= "<div id='cbwp_flipbook_outr'>\n"; 
+				// $book .= "<div id='flipbook_status'>Loading slides...</div>\n";
 				$book .= "<p class='book-menu'></p>\n"; 
-				$book .= "\t<div id='cbwp_magazine'>\n";
+				$book .= "\t<div id='cbwp_flipbook'>\n";
                 $book .= "\t\t<div class='b-load'>\n";  
                 $book .= $cover;
 				$book .= $toc;
@@ -231,7 +231,7 @@ if ( !class_exists( "cbwp_MagazineShortCode" ) ) {
                 
 				return $book;
             }
-            add_shortcode( 'magazine', 'magazine_func' );
+            add_shortcode( 'flipbook', 'flipbook_func' );
         }               
     }
 }    

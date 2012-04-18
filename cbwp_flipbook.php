@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: CBWP Magazine
+Plugin Name: CBWP Flip Book
 Plugin URI: 
 Description: 
 Author: Chris Burbridge
@@ -25,10 +25,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */                                      
                                         
-require_once('magazine.class.php');
+require_once('flipbook.class.php');
 
 //instantiate the class
-if (class_exists('cbwp_magazine')) {
-    $cbwp_magazine_var = new cbwp_magazine();
+if (class_exists('cbwp_flipbook')) {
+    $cbwp_flipbook_var = new cbwp_flipbook();
 }
                              

@@ -4,14 +4,14 @@ if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
      
         function __construct() {
 
-            function register_magazine_type() {
+            function register_flipbook_type() {
             	/**
             	 * Register a custom post type
             	 * 
             	 */                    
 
                 $labels = array(
-                 'name' => _x('Magazine', 'Magazine Spreads'),
+                 'name' => _x('Flip Book', 'Flip Book Spreads'),
                  'singular_name' => _x('Spread', 'Spread'),
                  'add_new' => _x('Add Spread', 'spread'),
                  'add_new_item' => __('Add New Spread'),
@@ -31,9 +31,9 @@ if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
             	// 	60 - below first separator
             	// 	100 - below second separator	
 
-            	register_post_type('magazine', array( 
+            	register_post_type('flipbook', array( 
             		'labels' => $labels,
-            		'description' => __('The magazine.'),
+            		'description' => __('The flipbook.'),
             		'public' => false,
             		// 'rewrite'=> array('slug' => ''),	// *** Here, also note any prepending
             		'exclude_from_search' => false,
@@ -70,7 +70,7 @@ if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
             	
             	
             }
-            add_action('init', 'register_magazine_type');                    
+            add_action('init', 'register_flipbook_type');                    
 
         }
     }

@@ -1,6 +1,6 @@
 <?php
-if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
-	class cbwp_MagazineExtraFields {
+if ( !class_exists( "cbwp_Flip BookExtraFields" ) ) {
+	class cbwp_FlipBookExtraFields {
      
         function __construct() {
 
@@ -14,12 +14,12 @@ if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
 
             $meta_boxes = array();
 
-            // ***** Magazine Spread Boxes *****                             
+            // ***** Flip Book Spread Boxes *****                             
             
             $meta_boxes[] = array(
                 'id' => $prefix . 'instructions',
                 'title' => 'Instructions',
-                'pages' => array('magazine'),
+                'pages' => array('flipbook'),
                 'context' => 'normal',
                 'priority' => 'high',
                 'html' => '<p>Just fill in the boxes you want to have things in.</p>',
@@ -30,7 +30,7 @@ if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
             $meta_boxes[] = array(
             	'id' => $prefix . 'spread-left-page',
             	'title' => 'Left Page',
-            	'pages' => array('magazine'),
+            	'pages' => array('flipbook'),
             	'context' => 'normal',
             	'priority' => 'high',
             	'fields' => array(
@@ -66,7 +66,7 @@ if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
         $meta_boxes[] = array(
         	'id' => $prefix . 'spread-right-page',
         	'title' => 'Right Page',
-        	'pages' => array('magazine'),
+        	'pages' => array('flipbook'),
         	'context' => 'normal',
         	'priority' => 'high',
         	'fields' => array(
@@ -103,7 +103,7 @@ if ( !class_exists( "cbwp_MagazineExtraFields" ) ) {
         $meta_boxes[] = array(
             'id' => $prefix . 'toc',
             'title' => 'For Table of Contents',
-            'pages' => array('magazine'),
+            'pages' => array('flipbook'),
             'context' => 'normal',
             'priority' => 'high',
             'fields' => array(
