@@ -1,14 +1,14 @@
 <?php
 /*
-Plugin Name: CBWP Flip Book
-Plugin URI: 
-Description: 
+Plugin Name: CBWP jQuery Flip Book
+Plugin URI: http://chrisburbridge.com/plugins/jquery-flip-book/ 
+Description: A jQuery-based flip book based on the <a href='http://builtbywill.com/code/booklet/'>jQuery Booklet plugin</a>
 Author: Chris Burbridge
 Version: 0.1
 Author URI: http://chrisburbridge.com
 */   
    
-/*  Copyright 2010
+/*  Copyright 2012
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
