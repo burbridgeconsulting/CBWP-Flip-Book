@@ -1,4 +1,4 @@
-<?php
+<?php        
 if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
 	class cbwp_CustomPostTypes {
      
@@ -40,6 +40,7 @@ if ( !class_exists( "cbwp_CustomPostTypes" ) ) {
             		'publically_queryable' => false,
             		'show_ui' => true,
             		'menu_position' => 4,  // See menu position notes above
+					'menu_icon' => plugins_url( basename( dirname( __FILE__ ) ) ) . "/images/book-open-text-image.png",
             		'show_in_nav_menus' => false,
             		'hierarchal' => false,
             		'supports' => array(

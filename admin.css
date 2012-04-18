@@ -1,0 +1,22 @@
+/* @override 
+	http://future-fab.local/wp-content/plugins/cbwp-post-types/admin.css
+	http://cbwp-flipbook.local/wp-content/plugins/cbwp_flipbook/admin.css
+*/
+
+#menu-posts-flipbook .wp-menu-image img {
+	position: absolute;
+	top: -22px;
+	clip: rect(24px, 28px, 100px, 0);
+}	
+
+#menu-posts-flipbook:hover img {
+	top: 2px;
+	clip: rect(0, 28px, 24px, 0);
+}	
+
+.icon32-posts-flipbook {
+	background: url('images/book-open-text-image-32.png') no-repeat !important;	
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+}

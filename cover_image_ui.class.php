@@ -4,8 +4,13 @@ if ( !class_exists( "cbwp_Options" ) ) {
      
         function __construct() {        
             add_action('admin_menu', array(&$this, 'plugin_menu'));
-        }               
-        
+            add_action('admin_head', array(&$this, 'admin_css'));
+        }                                                    
+
+		function admin_css() {
+		    echo "<link rel='stylesheet' type='text/css' href='" . plugins_url( basename( dirname( __FILE__ ) ) ) . "/admin.css' />\n";
+		}
+
         function plugin_menu() {
         	add_submenu_page(
         	    'edit.php?post_type=flipbook', 
@@ -14,7 +19,7 @@ if ( !class_exists( "cbwp_Options" ) ) {
         	    'manage_options',
         	    'flipbook_options', 
         	    array(&$this, 'plugin_options')
-            );
+        	            );
         }                   
         
         function plugin_options() {
@@ -52,7 +57,7 @@ if ( !class_exists( "cbwp_Options" ) ) {
                 echo '<div class="wrap">';
 
                 // header
-                echo "<h2>" . __( 'Flip Book Plugin Settings', 'flipbook' ) . "</h2>";
+                echo "<div id='icon-edit' class='icon32 icon32-posts-flipbook'><br /></div><h2>" . __( 'Flip Book Plugin Settings', 'flipbook' ) . "</h2>";
 
                 // settings form
                 ?>

@@ -88,7 +88,7 @@ if (!class_exists('cbwp_flipbook')) {
             wp_enqueue_style( 'cbwp_jquery_booklet', $this->pluginurl . 'jquery.booklet.1.2.0.css' );
             wp_enqueue_style( 'cbwp_flipbook_styles', $this->pluginurl . 'flipbook.css' );
         }
-        
+
         /**
         * Retrieves the plugin options from the database.
         * @return array
@@ -110,7 +110,9 @@ if (!class_exists('cbwp_flipbook')) {
         */
         function saveAdminOptions(){
             return update_option($this->optionsName, $this->options);
-        }
+        }                      
+
+
         
         /**
         * @desc Adds the options subpanel
@@ -118,7 +120,7 @@ if (!class_exists('cbwp_flipbook')) {
         function admin_menu_link() {
             //If you change this from add_options_page, MAKE SURE you change the filter_plugin_actions function (below) to
             //reflect the page filename (ie - options-general.php) of the page your plugin is under!
-            add_options_page('Flip Book', 'Flip Book', 10, basename(__FILE__), array(&$this,'admin_options_page'));
+            // add_options_page('Flip Book', 'Flip Book', 10, basename(__FILE__), array(&$this,'admin_options_page'));
             add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array(&$this, 'filter_plugin_actions'), 10, 2 );
         }
         
@@ -138,41 +140,7 @@ if (!class_exists('cbwp_flipbook')) {
         * Adds settings/options page
         */
         function admin_options_page() { 
-            if($_POST['cbwp_flipbook_save']){
-                if (! wp_verify_nonce($_POST['_wpnonce'], 'cbwp_flipbook-update-options') ) die('Whoops! There was a problem with the data you posted. Please go back and try again.'); 
-                $this->options['cbwp_flipbook_path'] = $_POST['cbwp_flipbook_path'];                   
-                $this->options['cbwp_flipbook_allowed_groups'] = $_POST['cbwp_flipbook_allowed_groups'];
-                $this->options['cbwp_flipbook_enabled'] = ($_POST['cbwp_flipbook_enabled']=='on')?true:false;
-                                        
-                $this->saveAdminOptions();
-                
-                echo '<div class="updated"><p>Success! Your changes were sucessfully saved!</p></div>';
-            }
-?>                                   
-                <div class="wrap">
-                <h2>Flip Book Settings</h2>
-                <form method="post" id="cbwp_flipbook_options">
-                <?php wp_nonce_field('cbwp_flipbook-update-options'); ?>
-                    <table width="100%" cellspacing="2" cellpadding="5" class="form-table"> 
-                        <tr valign="top"> 
-                            <th width="33%" scope="row"><?php _e('Option 1:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbwp_flipbook_path" type="text" id="cbwp_flipbook_path" size="45" value="<?php echo $this->options['cbwp_flipbook_path'] ;?>"/>
-                        </td> 
-                        </tr>
-                        <tr valign="top"> 
-                            <th width="33%" scope="row"><?php _e('Option 2:', $this->localizationDomain); ?></th> 
-                            <td><input name="cbwp_flipbook_allowed_groups" type="text" id="cbwp_flipbook_allowed_groups" value="<?php echo $this->options['cbwp_flipbook_allowed_groups'] ;?>"/>
-                            </td> 
-                        </tr>
-                        <tr valign="top"> 
-                            <th><label for="cbwp_flipbook_enabled"><?php _e('CheckBox #1:', $this->localizationDomain); ?></label></th><td><input type="checkbox" id="cbwp_flipbook_enabled" name="cbwp_flipbook_enabled" <?=($this->options['cbwp_flipbook_enabled']==true)?'checked="checked"':''?>></td>
-                        </tr>
-                        <tr>
-                            <th colspan=2><input type="submit" name="cbwp_flipbook_save" value="Save" /></th>
-                        </tr>
-                    </table>
-                </form>
-                <?php
+
         }
         
   } //End Class
